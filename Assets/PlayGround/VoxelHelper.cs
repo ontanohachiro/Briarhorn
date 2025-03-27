@@ -3,7 +3,8 @@ using UnityEngine;
 
 public static class VoxelHelper//ユーティリティクラス:便利なメソッド群をstaticな領域にまとめたもの.
 {
-
+  
+    public static readonly float WallHeight = 0.5f;
     public static readonly int2 AtlasSize = new int2(8, 8);
 
     /// <Summary>
@@ -54,6 +55,15 @@ public static class VoxelHelper//ユーティリティクラス:便利なメソッド群をstaticな
     public static Vector3 ChunkToWorld(Vector3Int chunkPosition, Vector3Int chunkSize)
     {
         return chunkPosition * chunkSize;
+    }
+    /// <Summary>
+    ///WallHeightの値を考慮しながら、チャンクのTerrain内での座標をボクセル空間座標に変換する.
+    /// </Summary>
+    public static Vector3 ChunkToWorldDist(int3 chunkPosition, int3 chunkSize)//
+    {
+        Vector3 worldPos = new Vector3Int(chunkPosition.x, chunkPosition.y, chunkPosition.z) * new Vector3Int(chunkSize.x, chunkSize.y, chunkSize.z);
+        worldPos.y *= WallHeight;
+        return  worldPos;
     }
 
     public static Vector3 GridToWorld(Vector3Int gridPosition, Vector3Int chunkPosition, Vector3Int chunkSize)
@@ -254,7 +264,7 @@ public static class VoxelHelper//ユーティリティクラス:便利なメソッド群をstaticな
         //& はビット単位の AND 演算子で、対応するビットが両方とも 1 の場合に 1 を返す。Unity.Mathematics では、ベクトル型同士の要素ごとの論理積（AND）を計算する際にも使用される.
     }
     /// <Summary>
-    ///元のプログラムを流用するための措置として、各立方体の出っ張っている部分(奥、右、上)をへこませて、反対側のものと同じ位置にする.0:Floor,1:Wall1,2:Wall2.
+    ///元のプログラムを流用するための措置として、各立方体の出っ張っている部分(奥、右、上)をへこませて、反対側のものと同じ位置にする.0:Floor,1:Wall1,2:Wall2.WallHeightを考慮する必要はない.
     /// </Summary>
     public static readonly int3[] VertexOffsetByPartitons =
     {

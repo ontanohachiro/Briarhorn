@@ -136,10 +136,10 @@ public class GreedyMeshingAlgorithm
         */
         int2 atlasPosition = new int2 { x = atlasIndex % AtlasSize.x, y = atlasIndex / AtlasSize.x };//2Dマップ上での位置を計算.
         int3 VDO = VoxelHelper.VoxelDirectionOffsets[direction];
-        Vector3 normal = new Vector3(VDO.x, VDO.y, VDO.z);
+        Vector3 normal = new Vector3(VDO.x, VDO.y, VDO.z);//法線.
         if (direction % 2 == 0)//偶数なら.
         {
-            position += VoxelHelper.VertexOffsetByPartitons[PartitonClass];
+            FloatPosition += VoxelHelper.VertexOffsetByPartitons[PartitonClass];
         }
         for (int i = 0; i < 4; i++)  // 四角形の頂点を計算
         {
