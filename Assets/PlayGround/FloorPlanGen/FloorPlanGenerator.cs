@@ -4,6 +4,11 @@ using System.Linq;
 using QuikGraph;
 using System;
 
+public enum ToDebug
+{
+    CalculateDistanceToWall,
+    CalculateWeightsForRoom
+}
 // 部屋の種類 (パブリック、プライベート、廊下など)
 public enum RoomType
 {
@@ -18,7 +23,7 @@ public enum RoomType
 // ゾーンまたは部屋を表すクラス
 public class RoomDefinition
 {
-    private int ID;
+    public int ID;
     public RoomType Type;
     public float SizeRatio; // 要求される相対的なサイズ比率
     public List<int> ConnectivityConstraints; // 直接接続すべき部屋のIDリスト
@@ -93,6 +98,7 @@ public class Door
 
 public  partial class FloorPlanGenerator : MonoBehaviour
 {
+    public ToDebug todebug;
     private bool isconfigured = false;
     public FloorPlanSettings settings;//serializable,今のところはunityのインスペクターで設定.
 

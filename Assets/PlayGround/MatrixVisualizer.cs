@@ -118,7 +118,7 @@ public class MatrixVisualizer : MonoBehaviour
         int[,] footprint = CreateFootprint(xsize, ysize);
         //inputSettings = new FloorPlanSettings(footprint,);
     }
-    public void execute(float[,] Matrix)
+    public void Execute(float[,] Matrix)
     {
         if(Parent != null)
         {
