@@ -651,7 +651,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6969037, y: -0, z: -0, w: 0.7171648}
-  m_LocalPosition: {x: 4.41, y: 10.85, z: 4.01}
+  m_LocalPosition: {x: 4.41, y: 8.9, z: 4.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -749,6 +749,7 @@ MonoBehaviour:
     SeedPlacementWeightDistanceFactor: 0.5
     SeedPlacementAdjacencyBonus: 1
     SeedExclusionRadius: 1
+  MVinstance: {fileID: 35251554}
 --- !u!4 &366539258
 Transform:
   m_ObjectHideFlags: 0
@@ -794,7 +795,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -837,7 +838,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 9233
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0

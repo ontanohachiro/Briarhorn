@@ -5,8 +5,16 @@ using UnityEngine;
 
 public class MatrixVisualizer : MonoBehaviour
 {
-    public int xsize, ysize;
+    private GameObject Parent = null;
+    public FloorPlanSettings inputSettings;
+
     public FloorPlanGenerator FPG_instance;
+    public enum OutputTarget { };
+    public int xsize, ysize;
+    
+    
+    
+
     private int[,] CreateFootprint(int x, int y)
     {
         // 配列サイズが小さすぎる場合（外側以外を埋めるために最低3x3が必要）のエラー処理
@@ -66,6 +74,7 @@ public class MatrixVisualizer : MonoBehaviour
     {
         // キューブの作成
         GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.SetParent(Parent.transform);
         cube.transform.position = Position + new Vector3 (0.5f, 0f, 0.5f);
         // キューブのRendererコンポーネントを取得
         // PrimitiveType.Cube で作成されたGameObjectにはRendererコンポーネントが自動的にアタッチされます
@@ -106,16 +115,19 @@ public class MatrixVisualizer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        int[,] footprint = CreateFootprint(xsize, ysize);
+        //inputSettings = new FloorPlanSettings(footprint,);
     }
-    public void execute()
+    public void execute(float[,] Matrix)
     {
-        FPG_instance.settings.InputFootprintGrid = CreateFootprint(xsize, ysize);
-        FPG_instance.InitializeGrid();
-        float[,] Matrix = FPG_instance.CalculateDistanceToWall();
-        for (int i = 0; i < xsize; i++)
+        if(Parent != null)
         {
-            for (int j = 0; j < ysize; j++)
+            Destroy(Parent);//Mesh（MeshFilter.sharedMesh）, Material（Renderer.sharedMaterial,Texture,TextMeshProのフォントアセットやマテリアルは解放されない.
+        }
+        Parent = new GameObject();
+        for (int i = 0; i < Matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < Matrix.GetLength(1); j++)
             {
                 Vector3 vecPos = new Vector3((float)i, 0, (float)j);
                 PlaceCube(vecPos, Matrix[i, j]);
