@@ -6,8 +6,7 @@ using System;
 
 public enum ToDebug
 {
-    CalculateDistanceToWall,
-    CalculateWeightsForRoom
+    CalculateDistanceToWall,CalculateWeightsForRoom, SelectBestSeedPosition
 }
 // 部屋の種類 (パブリック、プライベート、廊下など)
 public enum RoomType
@@ -99,6 +98,7 @@ public class Door
 public  partial class FloorPlanGenerator : MonoBehaviour
 {
     public ToDebug todebug;
+    float[,] matrixToDebug;
     private bool isconfigured = false;
     public FloorPlanSettings settings;//serializable,今のところはunityのインスペクターで設定.
 
@@ -171,13 +171,13 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     /// </summary>
     private GeneratedFloorPlan AttemptGeneration(List<RoomDefinition> roomsToPlace)
     {
+        matrixToDebug = SetMatrix();
         InitializeGrid();
         if (_totalPlaceableCells == 0)
         {
             Debug.LogError("No placeable cells found in the InputFootprintGrid.");
             return null;
         }
-        AssignRoomIDs(roomsToPlace);
 
         // 1. 部屋の初期位置決定 (Room Placement)
         if (!PlaceInitialSeeds(roomsToPlace))
@@ -185,7 +185,8 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             Debug.LogError("Failed during PlaceInitialSeeds.");
             return null;
         }
-
+        MVinstance.Execute(matrixToDebug);
+        return null;//ここまでしか出来てない
         // 2. 部屋の拡張 (Room Expansion)
         if (!ExpandRooms(roomsToPlace))
         {
@@ -264,30 +265,6 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// 各部屋定義にユニークな整数IDを割り当て. _roomDefinitionsの完全な作成.
-    /// </summary>
-    private void AssignRoomIDs(List<RoomDefinition> rooms)
-    {
-        _roomDefinitions = new Dictionary<int, RoomDefinition>();
-        _nextRoomID = 1;
-        foreach (var roomDef in rooms)
-        {
-            // RoomDefinitionのインスタンスをコピーして辞書に追加
-            // (元のリストのインスタンスを直接使うと、試行間で状態が引き継がれてしまうため)
-            RoomDefinition newRoomInstance = new RoomDefinition(_nextRoomID,roomDef.Type, roomDef.SizeRatio)
-            {
-                ConnectivityConstraints = new List<int>(roomDef.ConnectivityConstraints),
-                InitialSeedPosition = null, // リセット
-                CurrentSize = 0 //リセット
-                                // Boundsは後で計算
-            };
-            _roomDefinitions.Add(_nextRoomID, newRoomInstance);
-            _nextRoomID++;
-        }
-        Debug.Log($"{_roomDefinitions.Count} rooms assigned IDs.");
-    }
-
-    /// <summary>
     /// 生成されたプランの評価 (スコアリング) - ダミー実装
     /// </summary>
     private float EvaluatePlan(GeneratedFloorPlan plan)
@@ -361,6 +338,17 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     }
 
 
-
+    public float[,] SetMatrix()
+    {
+        float[,] returnMatrix = new float[_gridSize.x, _gridSize.y];
+        for (int i = 0; i < _gridSize.x; i++)
+        {
+            for (int j = 0; j < _gridSize.y; j++)
+            {
+                returnMatrix[i,j] = 0.0f;
+            }
+        }
+        return returnMatrix;
+    }
 
 }

@@ -10,6 +10,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
     /// </summary>
     private bool PlaceInitialSeeds(List<RoomDefinition> roomsToPlace) 
     {
+        
+       
         Debug.Log("Placing initial seeds...");
         // 各部屋のIDをキーとした重みマップの辞書を初期化します。
         Dictionary<int, float[,]> weightGrids = InitializeWeightGrids();
@@ -18,7 +20,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
 
         if (todebug == ToDebug.CalculateDistanceToWall)
         {
-            MVinstance.Execute(_distanceToWall);
+            matrixToDebug = _distanceToWall;
         }
 
         // 各部屋のシードを配置します。
@@ -39,7 +41,10 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 room.CurrentSize = 1; // シードセルが配置されたので、部屋の現在のサイズを1とします。
                 Debug.Log($"Placed seed for room {room.ID} ({room.Type}) at {seedPos.Value}");
 
-
+                if (todebug == ToDebug.SelectBestSeedPosition)
+                {
+                    matrixToDebug[seedPos.Value.x, seedPos.Value.y] = 1.0f;
+                }
                 // 3. 配置したシードセルの周囲の重みを、他の部屋の重みグリッドで下げます。
                 // これにより、他の部屋のシードが近すぎる位置に配置されるのを防ぎます。
                 // UpdateWeightsAroundSeedメソッドは、配置された部屋（room.ID）以外の全ての部屋の重みマップを更新します。
