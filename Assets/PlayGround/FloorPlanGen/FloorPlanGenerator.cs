@@ -4,40 +4,34 @@ using System.Linq;
 using QuikGraph;
 using System;
 
-public enum ToDebug
-{
-    CalculateDistanceToWall,CalculateWeightsForRoom, SelectBestSeedPosition
-}
 // 部屋の種類 (パブリック、プライベート、廊下など)
 public enum RoomType
 {
-    Public,
-    Private,
+    LivingRoom,
+    Kitchen,
+    Bedroom,
+    Bathroom,
     Hallway,
-    Staircase,
-    // 必要に応じて追加
-    Outside // 建物外を示すために追加
+    Entrance,
+    Private,Public
 }
-
 // ゾーンまたは部屋を表すクラス
 public class RoomDefinition
 {
     public int ID;
     public RoomType Type;
     public float SizeRatio; // 要求される相対的なサイズ比率
-    public List<int> ConnectivityConstraints; // 直接接続すべき部屋のIDリスト
 
     // 実行時に計算される情報
     public Vector2Int? InitialSeedPosition; // 拡張の開始位置
     public RectInt Bounds; // エリアの境界ボックス (拡張後に計算)
     public int CurrentSize = 0; // 拡張中の現在のセル数
 
-    public RoomDefinition(int id,RoomType type, float ratio)//コンストラクタ.ConnectivityConstraintsは具体的に設定しない.
+    public RoomDefinition(int id,RoomType type, float ratio)//コンストラクタ
     {
         ID = id;
         Type = type;
         SizeRatio = ratio;
-        ConnectivityConstraints = new List<int>();
     }
 }
 
@@ -81,7 +75,7 @@ public class FloorPlanSettings//入力.
 public class GeneratedFloorPlan
 {
     public int[,] Grid; // 各セルがどの部屋IDに属するかを示すグリッド (0:壁/外, -1:配置可能だが未割当 >0:部屋ID)
-    public Dictionary<int, RoomDefinition> Rooms; // IDと部屋定義のマッピング
+    public List<RoomDefinition> Rooms; // IDと部屋定義のマッピング
     public List<Door> Doors; // 配置されたドアのリスト
 }
 
@@ -97,10 +91,11 @@ public class Door
 
 public  partial class FloorPlanGenerator : MonoBehaviour
 {
-    public ToDebug todebug;
+    
     float[,] matrixToDebug;
     private bool isconfigured = false;
     public FloorPlanSettings settings;//serializable,今のところはunityのインスペクターで設定.
+   
 
     public void Setup(FloorPlanSettings inputsettings)
     {
@@ -110,7 +105,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
 
     public MatrixVisualizer MVinstance;//設定.
     private int[,] _grid; // 0: 建物外/壁/穴, -1: 配置可能だが未割り当て, >0: 部屋ID .出力に使用.
-    private Dictionary<int, RoomDefinition> _roomDefinitions; // IDと部屋のマッピング.出力に使用.
+    private List< RoomDefinition> _roomDefinitions; 
     private int _nextRoomID = 1;
     private System.Random _random = new System.Random();
     private Vector2Int _gridSize;
@@ -127,7 +122,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             return null;
         }
 
-        List<RoomDefinition> roomsToPlace = settings.RoomDefinitionsList;
+        _roomDefinitions = settings.RoomDefinitionsList;
 
         GeneratedFloorPlan bestPlan = null;
         float bestScore = float.MinValue; // スコアリング実装時に使用
@@ -135,7 +130,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         for (int attempt = 0; attempt < settings.MaxGenerationAttempts; attempt++)
         {
             Debug.Log($"--- Generation Attempt {attempt + 1} ---");
-            GeneratedFloorPlan currentPlan = AttemptGeneration(roomsToPlace);
+            GeneratedFloorPlan currentPlan = AttemptGeneration();
 
             if (currentPlan != null)
             {
@@ -165,14 +160,18 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         return bestPlan;
     }
 
-
+    public void DebugAttempt()
+    {
+        _roomDefinitions = settings.RoomDefinitionsList;
+        AttemptGeneration();
+    }
     /// <summary>
     /// 1回のフロアプラン生成試行をする.
     /// </summary>
-    private GeneratedFloorPlan AttemptGeneration(List<RoomDefinition> roomsToPlace)
+    private GeneratedFloorPlan AttemptGeneration()
     {
-        matrixToDebug = SetMatrix();
         InitializeGrid();
+        matrixToDebug = SetFloatMatrix();
         if (_totalPlaceableCells == 0)
         {
             Debug.LogError("No placeable cells found in the InputFootprintGrid.");
@@ -180,22 +179,24 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         }
 
         // 1. 部屋の初期位置決定 (Room Placement)
-        if (!PlaceInitialSeeds(roomsToPlace))
+        if (!PlaceInitialSeeds())
         {
             Debug.LogError("Failed during PlaceInitialSeeds.");
             return null;
         }
         MVinstance.Execute(matrixToDebug);
         return null;//ここまでしか出来てない
+        /*
+         
         // 2. 部屋の拡張 (Room Expansion)
-        if (!ExpandRooms(roomsToPlace))
+        if (!ExpandRooms())
         {
             Debug.LogError("Failed during ExpandRooms.");
             return null;
         }
 
         // 隣接制約の検証
-        if (!VerifyAdjacencyConstraints(roomsToPlace))
+        if (!VerifyAdjacencyConstraints())
         {
             Debug.LogWarning("Adjacency constraints not fully met in this attempt.");
             // 失敗とするか、スコアを下げるかなどの判断
@@ -203,13 +204,13 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         }
 
         // 3. 部屋の接続性 (Room Connectivity)
-        List<Door> doors = DetermineConnectivity(roomsToPlace, settings.ConnectivityGraph);
+        List<Door> doors = DetermineConnectivity( settings.ConnectivityGraph);
         if (doors == null) // DetermineConnectivity内でエラーログが出るはず
         {
             Debug.LogError("Failed during DetermineConnectivity (door list is null).");
             return null;
         }
-        if (!VerifyReachability(roomsToPlace, doors))
+        if (!VerifyReachability(doors))
         {
             Debug.LogWarning("Reachability constraints not met. Attempting to fix...");
             // TODO: 到達可能性を修正するロジック (DetermineConnectivity内で部分的に対応済み)
@@ -217,19 +218,20 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             // return null; // 修正不可なら失敗とする
         }
 
-
+        
         // 成功した場合、結果を構築
         GeneratedFloorPlan plan = new GeneratedFloorPlan
         {
             Grid = (int[,])_grid.Clone(),
-            Rooms = new Dictionary<int, RoomDefinition>(_roomDefinitions.ToDictionary(kvp => kvp.Key, kvp => kvp.Value)), // RoomDefinitionもディープコピーが必要なら別途対応
+            Rooms = _roomDefinitions, // RoomDefinitionもディープコピーが必要なら別途対応
             Doors = doors,
         };
-
+        
         // Boundsを計算して格納 (オプション)
         CalculateRoomBounds(plan);
 
         return plan;
+        */
     }
 
     /// <summary>
@@ -242,6 +244,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             Debug.LogError("InputFootprintGrid is null!");
             return;
         }
+        //ここで_gridSize が初期化されるため、InitializeGrid()以前でsetfloatMatrixを使ってはいけない.
         _gridSize = new Vector2Int(settings.InputFootprintGrid.GetLength(0), settings.InputFootprintGrid.GetLength(1));
         _grid = new int[_gridSize.x, _gridSize.y];
         _totalPlaceableCells = 0;
@@ -286,9 +289,9 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         // 例: 面積比率の誤差が大きいほどスコアを下げる
         // float totalArea = plan.Rooms.Values.Sum(r => GetRoomArea(plan.Grid, r.Key)); // GetRoomAreaは要実装
         // float ratioError = 0f;
-        // foreach(var kvp in plan.Rooms) {
-        //      float targetRatio = kvp.Value.SizeRatio / plan.Rooms.Values.Sum(r => r.SizeRatio);
-        //      float actualRatio = GetRoomArea(plan.Grid, kvp.Key) / totalArea;
+        // foreach(var room in plan.Rooms) {
+        //      float targetRatio = room.Value.SizeRatio / plan.Rooms.Values.Sum(r => r.SizeRatio);
+        //      float actualRatio = GetRoomArea(plan.Grid, room.Key) / totalArea;
         //      ratioError += Mathf.Abs(targetRatio - actualRatio);
         // }
         // score *= Mathf.Clamp01(1.0f - ratioError); // 誤差が大きいほど減点
@@ -302,10 +305,9 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     /// </summary>
     private void CalculateRoomBounds(GeneratedFloorPlan plan)
     {
-        foreach (var kvp in plan.Rooms)
+        foreach (var room in plan.Rooms)
         {
-            int roomId = kvp.Key;
-            RoomDefinition room = kvp.Value;
+            int roomId = room.ID;
             int minX = _gridSize.x, minY = _gridSize.y, maxX = -1, maxY = -1;
             bool roomFound = false;
 
@@ -338,7 +340,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     }
 
 
-    public float[,] SetMatrix()
+    public float[,] SetFloatMatrix()
     {
         float[,] returnMatrix = new float[_gridSize.x, _gridSize.y];
         for (int i = 0; i < _gridSize.x; i++)

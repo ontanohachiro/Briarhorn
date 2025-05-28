@@ -151,9 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792843fdc2965ac4f9353ddb186452f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  todebug: 2
+  inputSettings:
+    MaxGenerationAttempts: 0
+    SeedPlacementWeightDistanceFactor: 0
+    SeedPlacementAdjacencyBonus: 0
+    SeedExclusionRadius: 0
+  FPG_instance: {fileID: 366539257}
   xsize: 10
   ysize: 10
-  FPG_instance: {fileID: 366539257}
 --- !u!4 &35251555
 Transform:
   m_ObjectHideFlags: 0
@@ -513,9 +519,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 35251554}
-        m_TargetAssemblyTypeName: MatrixVisualizer, Assembly-CSharp
-        m_MethodName: execute
+      - m_Target: {fileID: 366539257}
+        m_TargetAssemblyTypeName: FloorPlanGenerator, Assembly-CSharp
+        m_MethodName: DebugAttempt
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

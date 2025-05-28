@@ -1,15 +1,21 @@
+using QuikGraph;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+public enum ToDebug
+{
+    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition
+}
+
 public class MatrixVisualizer : MonoBehaviour
 {
+    public ToDebug todebug;
     private GameObject Parent = null;
     public FloorPlanSettings inputSettings;
 
     public FloorPlanGenerator FPG_instance;
-    public enum OutputTarget { };
     public int xsize, ysize;
     
     
@@ -70,6 +76,80 @@ public class MatrixVisualizer : MonoBehaviour
         // ③ return
         return footprint;
     }
+    public List<RoomDefinition> CreateRoomDefinitionList()
+    {
+        // RoomDefinitionを格納するListのインスタンスを生成する。
+        var roomDefinitions = new List<RoomDefinition>();
+
+        roomDefinitions.Add(new RoomDefinition(
+            id: 0, // 部屋のユニークID。
+            type: RoomType.Entrance, // 部屋の種類。
+            ratio: 5f // 要求サイズ比率。
+        ));
+        roomDefinitions.Add(new RoomDefinition(
+            id: 1,
+            type: RoomType.LivingRoom,
+            ratio: 30f
+        ));
+
+        roomDefinitions.Add(new RoomDefinition(
+            id: 2,
+            type: RoomType.Kitchen,
+            ratio: 15f
+        ));
+
+        roomDefinitions.Add(new RoomDefinition(
+            id: 3,
+            type: RoomType.Bedroom,
+            ratio: 25f
+        ));
+
+        roomDefinitions.Add(new RoomDefinition(
+            id: 4,
+            type: RoomType.Bathroom,
+            ratio: 10f
+        ));
+
+        roomDefinitions.Add(new RoomDefinition(
+            id: 5,
+            type: RoomType.Hallway,
+            ratio: 15f
+        ));
+        // 作成した部屋定義のリストを返す。
+        return roomDefinitions;
+    }
+
+    // ConnectivityGraph (AdjacencyGraph<int, Edge<int>>) のインスタンスを作成する関数。
+    public AdjacencyGraph<int, Edge<int>> CreateConnectivityGraph()
+    {
+        // AdjacencyGraphのインスタンスを生成する。
+        var graph = new AdjacencyGraph<int, Edge<int>>();
+        for (int i = 0; i < 6; i++)
+        {
+            graph.AddVertex(i);
+        }
+        // グラフに辺を追加していく。辺を追加すると、関連する頂点も自動的に追加される。
+        // Edge<int> は、始点と終点の部屋IDを持つ。
+        // ここでのIDは、CreateRoomDefinitionListで定義した部屋のIDに対応する。
+
+        // 玄関 (ID:0) は リビング (ID:1) に接続する。
+        graph.AddEdge(new Edge<int>(0, 1));
+        graph.AddEdge(new Edge<int>(1, 0));
+        // リビング (ID:1) は キッチン (ID:2) に接続する。
+        graph.AddEdge(new Edge<int>(1, 2));
+        graph.AddEdge(new Edge<int>(2, 1));
+        // リビング (ID:1) は 廊下 (ID:5) に接続する。
+        graph.AddEdge(new Edge<int>(1, 5));
+        graph.AddEdge(new Edge<int>(5,1));
+        // 廊下 (ID:5) は 寝室 (ID:3) に接続する。
+        graph.AddEdge(new Edge<int>(5, 3));
+        graph.AddEdge(new Edge<int>(3, 5));
+        // 廊下 (ID:5) は バスルーム (ID:4) に接続する。
+        graph.AddEdge(new Edge<int>(5, 4));
+        graph.AddEdge(new Edge<int>(4,5));
+        // 無向グラフとして扱いたい場合、逆方向の辺も定義する
+        return graph;
+    }
     private void PlaceCube(Vector3 Position, float weight)
     {
         // キューブの作成
@@ -112,11 +192,11 @@ public class MatrixVisualizer : MonoBehaviour
         // テキストのスケールを調整
         textObj.transform.localScale = Vector3.one * 0.1f;
     }
-    // Start is called before the first frame update
+    
     void Start()
     {
-        int[,] footprint = CreateFootprint(xsize, ysize);
-        //inputSettings = new FloorPlanSettings(footprint,);
+        inputSettings = new FloorPlanSettings(CreateFootprint(xsize, ysize),CreateRoomDefinitionList(),CreateConnectivityGraph());
+        FPG_instance.Setup(inputSettings);
     }
     public void Execute(float[,] Matrix)
     {

@@ -8,7 +8,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
     /// <summary>
     /// ステップ1: 部屋の初期シード位置を配置
     /// </summary>
-    private bool PlaceInitialSeeds(List<RoomDefinition> roomsToPlace) 
+    private bool PlaceInitialSeeds() 
     {
         
        
@@ -18,7 +18,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         // 壁までの距離を事前に計算します。これは全室共通の重み計算に使用されます。
         float[,] _distanceToWall = CalculateDistanceToWall();
 
-        if (todebug == ToDebug.CalculateDistanceToWall)
+        if (MVinstance.todebug == ToDebug.CalculateDistanceToWall)
         {
             matrixToDebug = _distanceToWall;
         }
@@ -26,7 +26,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         // 各部屋のシードを配置します。
         // ID順で配置することで、再現性のある結果を得やすくします。
         // 配置順序が結果に影響を与える可能性があるため、ランダム化や特定の順序（例：大きな部屋から）も検討可能です。
-        foreach (var room in _roomDefinitions.Values.OrderBy(r => r.ID)) // RoomDefinitionのIDプロパティでソートして処理します。
+        foreach (var room in _roomDefinitions.OrderBy(r => r.ID)) // RoomDefinitionのIDプロパティでソートして処理します。
         {
             // 1. この部屋（room）用の重みグリッドを計算します。
             // CalculateWeightsForRoomメソッドは、指定されたroom.IDに基づいて、対応するweightGrids内の重みマップを更新します。
@@ -40,10 +40,10 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 _grid[seedPos.Value.x, seedPos.Value.y] = room.ID; // グリッド上の対応するセルに部屋のIDを割り当てます。
                 room.CurrentSize = 1; // シードセルが配置されたので、部屋の現在のサイズを1とします。
                 Debug.Log($"Placed seed for room {room.ID} ({room.Type}) at {seedPos.Value}");
-
-                if (todebug == ToDebug.SelectBestSeedPosition)
+                if (MVinstance.todebug == ToDebug.SelectBestSeedPosition)
                 {
-                    matrixToDebug[seedPos.Value.x, seedPos.Value.y] = 1.0f;
+                    //前、ここが初期化されてないことがあった.
+                    matrixToDebug[seedPos.Value.x, seedPos.Value.y] = 10f + (float)(room.ID);
                 }
                 // 3. 配置したシードセルの周囲の重みを、他の部屋の重みグリッドで下げます。
                 // これにより、他の部屋のシードが近すぎる位置に配置されるのを防ぎます。
@@ -72,7 +72,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         // 部屋IDをキー、重みマップを値とする辞書を初期化します。
         Dictionary<int, float[,]> weightGrids = new Dictionary<int, float[,]>();
         // _roomDefinitionsに格納されている全ての部屋定義に対して処理を行います。
-        foreach (var room in _roomDefinitions.Values) // RoomDefinitionのIDをキーとして使用します。
+        foreach (var room in _roomDefinitions) // RoomDefinitionのIDをキーとして使用します。
         {
             // 新しい重みマップ（float型の2次元配列）を作成し、辞書に追加します。
             // グリッドサイズは_gridSize.x と _gridSize.yに基づきます。
@@ -97,7 +97,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
 
         // 目標面積から「理想的な」壁からの距離を推定します。
         // 全配置可能セル数と部屋のサイズ比率から、この部屋が占めるべきおおよそのセル数を計算します。
-        float estimatedTargetCells = _totalPlaceableCells * (targetRoom.SizeRatio / _roomDefinitions.Values.Sum(r => r.SizeRatio));
+        float estimatedTargetCells = _totalPlaceableCells * (targetRoom.SizeRatio / _roomDefinitions.Sum(r => r.SizeRatio));
         // 0除算を防ぐため、estimatedTargetCellsが0以下の場合は1とします。
         if (estimatedTargetCells <= 0) estimatedTargetCells = 1;
         // 理想的な壁からの距離を、推定セル数の平方根に係数を乗じて求めます。これは部屋の一辺のおおよその長さの半分程度を意図しています。
@@ -134,29 +134,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
                     currentWeight = 0f; // 念のため（InitializeGridで0になっているはずですが、ここでも0にします）。
                 }
 
-
-                // 3. 隣接制約に基づいて重みを調整します。
-                // targetRoomが接続制約（ConnectivityConstraints）を持っている場合。
-                if (targetRoom.ConnectivityConstraints != null)
-                {
-                    foreach (int constraintRoomId in targetRoom.ConnectivityConstraints)
-                    {
-                        // 接続すべき相手の部屋(constraintRoomId)が存在し、かつその初期シード位置が既に決定している場合。
-                        // 相互接続制約の場合、相手側にも制約があるか確認した方が良いですが、ここでは片方向で考慮します。
-                        if (_roomDefinitions.ContainsKey(constraintRoomId) && _roomDefinitions[constraintRoomId].InitialSeedPosition.HasValue)
-                        {
-                            Vector2Int neighborSeedPos = _roomDefinitions[constraintRoomId].InitialSeedPosition.Value;
-                            // 隣接部屋のシード位置からの距離を計算します。
-                            float distanceToNeighborSeed = Vector2Int.Distance(new Vector2Int(x, y), neighborSeedPos);
-                            // 例: 一定範囲内（idealDistanceFromWall未満）ならボーナスを加算します。範囲は調整可能です。
-                            if (distanceToNeighborSeed < idealDistanceFromWall)
-                            {
-                                // 距離が近いほど大きなボーナスを加算します。
-                                currentWeight += settings.SeedPlacementAdjacencyBonus * (1.0f - Mathf.Clamp01(distanceToNeighborSeed / idealDistanceFromWall));
-                            }
-                        }
-                    }
-                }
                 // 計算された重みを格納します。重みは負にならないようにします（現在はコメントアウト）。
                 weights[x, y] = Mathf.Max(0, currentWeight);
             }
@@ -269,7 +246,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 }
             }
         }
-
         // 最適な位置の候補が見つかった場合。
         if (bestPositions.Count > 0)
         {
@@ -333,7 +309,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
     {
         InitializeGrid(); // グリッドを-1（未割り当て配置可能）と0（配置不可）の状態に戻します。
         // 全ての部屋定義について、初期シード位置と現在のサイズをリセットします。
-        foreach (var room in _roomDefinitions.Values)
+        foreach (var room in _roomDefinitions)
         {
             room.InitialSeedPosition = null; // 初期シード位置をnullに設定。
             room.CurrentSize = 0; // 現在のサイズを0に設定。
