@@ -298,7 +298,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 }
             }
         }
-        // Debug.Log($"Updated weights around {seedPos} for other rooms."); // デバッグログ（コメントアウトされています）
+        Debug.Log($"Updated weights around {seedPos} for other rooms."); 
     }
 
 

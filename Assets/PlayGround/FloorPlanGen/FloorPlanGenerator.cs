@@ -91,24 +91,24 @@ public class Door
 
 public  partial class FloorPlanGenerator : MonoBehaviour
 {
-    
+    //出力用設定.
     float[,] matrixToDebug;
+    public MatrixVisualizer MVinstance;
+
+    //初期化の際に扱うプロパティ.
+    private System.Random _random = new System.Random();
     private bool isconfigured = false;
     public FloorPlanSettings settings;//serializable,今のところはunityのインスペクターで設定.
-   
-
     public void Setup(FloorPlanSettings inputsettings)
     {
         settings = inputsettings;
         isconfigured = true;
     }
-
-    public MatrixVisualizer MVinstance;//設定.
-    private int[,] _grid; // 0: 建物外/壁/穴, -1: 配置可能だが未割り当て, >0: 部屋ID .出力に使用.
-    private List< RoomDefinition> _roomDefinitions; 
-    private int _nextRoomID = 1;
-    private System.Random _random = new System.Random();
     private Vector2Int _gridSize;
+
+    //実行中に変化するプロパティ
+    private int[,] _grid; // 0: 建物外/壁/穴, -1: 配置可能だが未割り当て, >0: 部屋ID .出力に使用.
+    private List<RoomDefinition> _roomDefinitions;//部屋の特性.
     private int _totalPlaceableCells = 0; // 配置可能なセルの総数
 
     /// <summary>
@@ -122,7 +122,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             return null;
         }
 
-        _roomDefinitions = settings.RoomDefinitionsList;
+        _roomDefinitions = settings.RoomDefinitionsList;//よくないコピーの仕方.
 
         GeneratedFloorPlan bestPlan = null;
         float bestScore = float.MinValue; // スコアリング実装時に使用
@@ -339,7 +339,9 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// 与えられたgridと同じサイズで各要素が0.0fの行列を作成.
+    /// </summary>
     public float[,] SetFloatMatrix()
     {
         float[,] returnMatrix = new float[_gridSize.x, _gridSize.y];
