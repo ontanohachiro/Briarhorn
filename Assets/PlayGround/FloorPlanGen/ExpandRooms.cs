@@ -7,36 +7,59 @@ public partial class FloorPlanGenerator : MonoBehaviour
 {
     // 追加するプライベート変数
     private List<RoomDefinition> _roomsToExpand; // 拡張対象の部屋のリスト
-    private float _totalRequestedSizeRatio; // 全部屋の要求サイズ比率の合計
-
     /// <summary>
-    /// 部屋の拡張プロセスを開始する前に、必要な変数を初期化またはリセットします。
+    /// SizeRatioに従って確率的に部屋を選択し、リスト内でのインデックスを返す.
+    /// </summary>
+    private int SelectRoom(List<RoomDefinition> rooms)
+    {
+        // リストが空の場合は-1を返す //
+        if (rooms == null || rooms.Count == 0)
+        {
+            return -1;
+        }
+
+        float totalSizeRatio = 0f;
+        // 全ての部屋のSizeRatioの合計を計算する //
+        foreach (var room in rooms)
+        {
+            totalSizeRatio += room.SizeRatio;
+        }
+
+        if (totalSizeRatio <= 0f)
+        {
+            return -1; // 全てのSizeRatioが0または負の場合、選択不可とする
+        }
+        // 0からtotalSizeRatioまでの乱数を生成する //
+        float randomPoint = UnityEngine.Random.Range(0f, totalSizeRatio);
+
+        float currentSum = 0f;
+        // 各部屋のSizeRatioの範囲内に乱数が含まれるかを確認して部屋を選択する //
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            currentSum += rooms[i].SizeRatio;
+            // 乱数が現在の累積合計以下であれば、この部屋を選択する //
+            if (randomPoint <= currentSum) // randomPointがcurrentSumの区間に落ちた場合
+            {
+                return i; // 選択された部屋のインデックスを返す
+            }
+        }
+        Debug.Log("Something went wrong on Selectroom");
+        return -1;
+    }
+    /// <summary>
+    /// 部屋の拡張プロセスを開始する前に、必要な変数を初期化またはリセット.
+    /// 2-0.この時点で、_gridには、0(壁、配置不可),-1(未配置),ID(>0,IDに対応する各部屋のシード位置.各値につき一つしか存在しない)が存在.
+    /// 各部屋のCurrentSizeはちょうど1.
     /// </summary>
     private void InitializeRoomExpansion()
     {
         _roomsToExpand = new List<RoomDefinition>();
-        _totalRequestedSizeRatio = 0f;
 
-        // 全ての部屋定義を拡張リストに追加し、合計サイズ比率を計算します。
+        // 全ての部屋定義を拡張リストに追加し、合計サイズ比率を計算.
         foreach (var room in _roomDefinitions)
         {
-            room.CurrentSize = 0; // 現在のセル数をリセット
             room.Bounds = new RectInt(0, 0, 0, 0); // バウンディングボックスをリセット
             _roomsToExpand.Add(room);
-            _totalRequestedSizeRatio += room.SizeRatio;
-        }
-
-        // シードが配置されたグリッド上のセルに対応する部屋のCurrentSizeを更新します。
-        for (int x = 0; x < _gridSize.x; x++)
-        {
-            for (int y = 0; y < _gridSize.y; y++)
-            {
-                if (_grid[x, y] > 0) // 部屋IDが割り当てられている場合
-                {
-                    //_roomDefinitionsはリストなので、IDとインデックスが一致している前提
-                    _roomDefinitions[_grid[x, y]].CurrentSize++;
-                }
-            }
         }
         Debug.Log("Room expansion initialized.");
     }
@@ -48,57 +71,61 @@ public partial class FloorPlanGenerator : MonoBehaviour
     private bool ExpandRooms()
     {
         Debug.Log("Starting room expansion...");
-        InitializeRoomExpansion();
-
+        InitializeRoomExpansion();// フェーズ0.
+        List<RoomDefinition>  _roomsToExpandP1 = _roomsToExpand.ToList();
+        List<RoomDefinition> _roomsToExpandP2 = _roomsToExpand.ToList();
         // フェーズ1: 矩形拡張
         Debug.Log("Phase 1: Rectangular Expansion");
-        bool changedInRectPhase;
         int iterationCount = 0;
-        do
+        while (_roomsToExpandP1.Any()) // _roomsToExpandに部屋がある限り.
         {
-            changedInRectPhase = false;
-            // 部屋のリストをシャッフルして、毎回異なる拡張順序を試みます。
-            // これにより、生成されるフロアプランの多様性が増します。
-            _roomsToExpand = _roomsToExpand.OrderBy(r => _random.Next()).ToList();
+            // このイテレーションで処理する部屋を確率的に選択し、拡張を試みます。
 
-            foreach (var room in _roomsToExpand.ToList()) // ToList() でコピーを作成し、ループ中にリストが変更されても安全にします。
-            {
-                if (GrowRect(room)) // 部屋を矩形に拡張できるか試みます。
+            var room = _roomsToExpandP1[SelectRoom(_roomsToExpandP1)];
+            if (GrowRect(room)) // 部屋を矩形に拡張できるか試みます。
                 {
-                    changedInRectPhase = true; // 少なくとも1つの部屋が拡張されました。
+                     // 部屋が拡張できた場合、引き続き _roomsToExpand に残しておく
                 }
-            }
+                else // 拡張できなかった場合 (canGrow -- "いいえ" --> removeRoom)
+                {
+                    // 拡張できなくなった部屋を候補リストから除外します。
+                    // _roomsToExpand から直接削除します。
+                    _roomsToExpandP1.Remove(room);
+                }
             iterationCount++;
             if (iterationCount > _totalPlaceableCells * 2) // 無限ループ防止のための安全策
             {
                 Debug.LogWarning("Rectangular expansion phase reached max iterations. Breaking early.");
-                break;
+                break; // ループを強制終了します。
             }
-        } while (changedInRectPhase); // 変更がなくなるまで繰り返します。
+        }
 
         // フェーズ2: L字型拡張
         Debug.Log("Phase 2: L-Shape Expansion");
-        bool changedInLShapePhase;
-        iterationCount = 0;
-        do
+        iterationCount = 0; // イテレーションカウントをリセットします。
+        while (_roomsToExpandP2.Any()) //_roomsToExpandに部屋がある限り.
         {
-            changedInLShapePhase = false;
-            _roomsToExpand = _roomsToExpand.OrderBy(r => _random.Next()).ToList(); // 再度シャッフル
 
-            foreach (var room in _roomsToExpand.ToList())
-            {
+            var  room = _roomsToExpandP2[SelectRoom(_roomsToExpandP2)];
                 if (GrowLShape(room)) // 部屋をL字型に拡張できるか試みます。
                 {
-                    changedInLShapePhase = true;
+
                 }
-            }
+                else // 拡張できなかった場合
+                {
+                    // 拡張できなくなった部屋を候補リストから除外します。
+                    // _roomsToExpand から直接削除します。
+                    _roomsToExpandP2.Remove(room);
+                }
+            
+
             iterationCount++;
             if (iterationCount > _totalPlaceableCells * 2) // 無限ループ防止のための安全策
             {
                 Debug.LogWarning("L-Shape expansion phase reached max iterations. Breaking early.");
-                break;
+                break; // ループを強制終了します。
             }
-        } while (changedInLShapePhase);
+        }
 
 
         // フェーズ3: ギャップ埋め
@@ -109,37 +136,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
         return true;
     }
 
-
-    /// <summary>
-    /// 次に拡張する部屋を選択します。
-    /// 論文の「SelectRoom」に相当し、部屋の要求サイズ比率に基づいて選択されます。
-    /// </summary>
-    /// <param name="availableRooms">拡張可能な部屋のリスト。</param>
-    /// <returns>選択された部屋の定義。</returns>
-    private RoomDefinition SelectRoomToExpand(List<RoomDefinition> availableRooms)
-    {
-        if (availableRooms == null || !availableRooms.Any())
-        {
-            return null;
-        }
-
-        // 部屋のサイズ比率に基づいて重み付きランダム選択を行います。
-        // これにより、大きい部屋がより高い確率で選ばれますが、小さい部屋も選ばれる可能性があります。
-        float totalWeight = availableRooms.Sum(r => r.SizeRatio);
-        float randomNumber = (float)_random.NextDouble() * totalWeight;
-
-        foreach (var room in availableRooms)
-        {
-            if (randomNumber <= room.SizeRatio)
-            {
-                return room;
-            }
-            randomNumber -= room.SizeRatio;
-        }
-
-        // ここには到達しないはずですが、念のためリストの最初の部屋を返します。
-        return availableRooms.First();
-    }
 
 
     /// <summary>

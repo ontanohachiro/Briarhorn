@@ -6,7 +6,7 @@ using UnityEngine;
 public partial class FloorPlanGenerator : MonoBehaviour
 {
     /// <summary>
-    /// ステップ1: 部屋の初期シード位置を配置
+    /// ステップ1: 部屋の初期シード位置を配置.
     /// </summary>
     private bool PlaceInitialSeeds() 
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using QuikGraph;
 using System;
+using static UnityEngine.Rendering.DebugUI;
 
 // 部屋の種類 (パブリック、プライベート、廊下など)
 public enum RoomType
@@ -18,7 +19,8 @@ public enum RoomType
 // ゾーンまたは部屋を表すクラス
 public class RoomDefinition
 {
-    public int ID;
+    //初期化の際に代入される情報
+    public int ID;//1以上の整数.
     public RoomType Type;
     public float SizeRatio; // 要求される相対的なサイズ比率
 
@@ -29,6 +31,10 @@ public class RoomDefinition
 
     public RoomDefinition(int id,RoomType type, float ratio)//コンストラクタ
     {
+        if (id <= 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(id), "値は1以上である必要があります。");
+        }
         ID = id;
         Type = type;
         SizeRatio = ratio;
@@ -45,7 +51,7 @@ public class FloorPlanSettings//入力.
     public int[,] InputFootprintGrid;
 
     /// <summary>
-    /// 部屋定義のリスト (階層構造なし)
+    /// 部屋定義のリスト (階層構造なし).ID順に並んでいることを前提とする。ただし、IDは1から始まる。
     /// </summary>
     public List<RoomDefinition> RoomDefinitionsList;
 
