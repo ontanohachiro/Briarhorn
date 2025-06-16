@@ -43,7 +43,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 if (MVinstance.todebug == ToDebug.SelectBestSeedPosition)
                 {
                     //前、ここが初期化されてないことがあった.
-                    matrixToDebug[seedPos.Value.x, seedPos.Value.y] = 10f + (float)(room.ID);
+                    matrixToDebug[seedPos.Value.x, seedPos.Value.y] = (float)(room.ID);
                 }
                 // 3. 配置したシードセルの周囲の重みを、他の部屋の重みグリッドで下げます。
                 // これにより、他の部屋のシードが近すぎる位置に配置されるのを防ぎます。
@@ -92,8 +92,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
     {
         // 対象の部屋の重みマップへの参照を取得します。
         float[,] weights = weightGrids[targetRoomId];
-        // 対象の部屋の定義情報を取得します。
-        RoomDefinition targetRoom = _roomDefinitions[targetRoomId];
+        // 対象の部屋の定義情報を取得します。ID>=1より、id１の部屋がリストの0要素.注意.
+        RoomDefinition targetRoom = _roomDefinitions[targetRoomId-1];
 
         // 目標面積から「理想的な」壁からの距離を推定します。
         // 全配置可能セル数と部屋のサイズ比率から、この部屋が占めるべきおおよそのセル数を計算します。

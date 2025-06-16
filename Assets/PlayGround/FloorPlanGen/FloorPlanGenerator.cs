@@ -19,7 +19,7 @@ public enum RoomType
 // ゾーンまたは部屋を表すクラス
 public class RoomDefinition
 {
-    //初期化の際に代入される情報
+    //初期化の際に代入される情報.プログラム内で変化しない.
     public int ID;//1以上の整数.
     public RoomType Type;
     public float SizeRatio; // 要求される相対的なサイズ比率
@@ -116,10 +116,11 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     private int[,] _grid; // 0: 建物外/壁/穴, -1: 配置可能だが未割り当て, >0: 部屋ID .出力に使用.
     private List<RoomDefinition> _roomDefinitions;//部屋の特性.
     private int _totalPlaceableCells = 0; // 配置可能なセルの総数
+    private float totalSizeRatio = 0.0f;//各部屋のサイズ比の合計.
 
     /// <summary>
     /// フロアプラン生成のメイン関数
-    /// </summary>
+    /// </summary> 
     public GeneratedFloorPlan Generate()
     {
         if (isconfigured == false)
@@ -183,16 +184,12 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             Debug.LogError("No placeable cells found in the InputFootprintGrid.");
             return null;
         }
-
         // 1. 部屋の初期位置決定 (Room Placement)
         if (!PlaceInitialSeeds())
         {
             Debug.LogError("Failed during PlaceInitialSeeds.");
             return null;
         }
-        MVinstance.Execute(matrixToDebug);
-        return null;//ここまでしか出来てない
-        /*
          
         // 2. 部屋の拡張 (Room Expansion)
         if (!ExpandRooms())
@@ -200,7 +197,9 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             Debug.LogError("Failed during ExpandRooms.");
             return null;
         }
-
+       MVinstance.Execute(matrixToDebug);
+        return null;//ここまでしか出来てない
+        /*
         // 隣接制約の検証
         if (!VerifyAdjacencyConstraints())
         {
@@ -361,4 +360,39 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         return returnMatrix;
     }
 
+    /// <summary>
+    /// この関数は、int型の2次元配列と変換したい型名(type)を文字列で受け取り、
+    /// 指定された型の2次元配列に変換した結果を返す.
+    /// </summary>
+    /// <param name="grid">変換元のint型2次元配列</param>
+    /// <param name="type">変換先の型名を示す文字列（現在は"float"のみサポート）</param>
+    /// <returns>変換後のfloat型2次元配列。サポートされていない型が指定された場合はnullを返します。</returns>
+    public float[,] ConvertMatrix(int[,] grid, string type)
+    {
+        // 変換先の型として"float"が指定されているかを確認します。
+        if (type == "float")
+        {
+            // 元の配列の行数を取得します。
+            int rows = grid.GetLength(0);
+            // 元の配列の列数を取得します。
+            int cols = grid.GetLength(1);
+            // 返却値として使用する、gridと同じサイズのfloat型2次元配列を新たに作成します。
+            float[,] floatMatrix = new float[rows, cols];
+
+            // forループを2つ使用して、gridの全ての要素にアクセスします。
+            for (int i = 0; i < rows; i++)
+            {
+                for (int j = 0; j < cols; j++)
+                {
+                    // gridのint型要素をfloat型に明示的にキャスト（型変換）し、新しい配列の対応する位置に格納します。
+                    floatMatrix[i, j] = (float)grid[i, j];
+                }
+            }
+            // 型変換が完了したfloat型の2次元配列を関数の結果として返します。
+            return floatMatrix;
+        }
+
+        // "float"以外の型名が指定された場合、現時点ではサポートしていないためnullを返します。
+        return null;
+    }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 //ステップ2: 部屋を拡張するメインのコルーチン.
 public partial class FloorPlanGenerator : MonoBehaviour
 {
+    public float MaxSizeGrowRect = 0.5f;//GrowRectで拡張される部屋の限界.0.5なら、全ての部屋が拡張されても建物の半分のサイズとなる.
     // 追加するプライベート変数
     private List<RoomDefinition> _roomsToExpand; // 拡張対象の部屋のリスト
     /// <summary>
@@ -100,6 +101,11 @@ public partial class FloorPlanGenerator : MonoBehaviour
             }
         }
 
+        if (MVinstance.todebug == ToDebug.GrowRect)
+        {
+            matrixToDebug = ConvertMatrix(_grid,"float");
+        }
+
         // フェーズ2: L字型拡張
         Debug.Log("Phase 2: L-Shape Expansion");
         iterationCount = 0; // イテレーションカウントをリセットします。
@@ -142,12 +148,11 @@ public partial class FloorPlanGenerator : MonoBehaviour
     /// 部屋を矩形に拡張しようとします。
     /// 論文の「GrowRect」に相当し、最大の矩形領域への拡張を試みます。
     /// </summary>
-    /// <param name="room">拡張する部屋の定義。</param>
     /// <returns>部屋が拡張された場合はtrue、そうでない場合はfalse。</returns>
     private bool GrowRect(RoomDefinition room)
     {
         // 部屋のバウンディングボックスを取得（初回呼び出し時はシード位置から計算）
-        RectInt currentBounds = room.Bounds;
+        RectInt currentBounds = room.Bounds;//rectint:x,y,width,height.このとき全部0
         if (room.CurrentSize == 1 && !room.InitialSeedPosition.HasValue)
         {
             Debug.LogError($"Room {room.ID} has CurrentSize 1 but no InitialSeedPosition.");
@@ -160,6 +165,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         }
         else if (room.CurrentSize == 0) // シードがまだ配置されていない部屋は拡張できません
         {
+            Debug.Log("false in growrect");
             return false;
         }
 
@@ -169,20 +175,21 @@ public partial class FloorPlanGenerator : MonoBehaviour
         // 上方向への拡張
         for (int h = 1; ; h++) // 新しい高さ
         {
-            if (currentBounds.yMax + h > _gridSize.y) break; // グリッドのY方向の境界チェック
+            if (currentBounds.yMax + h > _gridSize.y) break; // グリッドのY方向の境界チェック.yMaxはy+heightを返す.
 
             bool canExpandRow = true;
-            for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)
+            for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)//xからx+width-1までの値をとる.
             {
-                if (_grid[x, currentBounds.yMax + h - 1] != -1) // 未割り当ての配置可能セルであること
+                if (_grid[x, currentBounds.yMax + h - 1] != -1) // 未割り当ての配置可能セルであることmaxでheightやwidthを足すとき-1.
                 {
                     canExpandRow = false;
                     break;
                 }
             }
             if (!canExpandRow) break;
-
+            //ここに到達したなら、(x,x+width-1,y,y+height+h-1)までのマスは-1であり、上方向に追加する余地が存在する.
             possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.y, currentBounds.width, currentBounds.height + h), currentBounds.width * h));
+            //矩形情報と増加する面積をリストに追加.複数のhについて存在しうる.
         }
 
         // 下方向への拡張
@@ -252,13 +259,24 @@ public partial class FloorPlanGenerator : MonoBehaviour
             .ThenBy(e => _random.Next()) // 同じ追加セル数の場合はランダム
             .ToList();
 
-        if (bestExpansions.Any())
+        var totalSizeRatio = _roomsToExpand.Sum(r => r.SizeRatio);
+        var maxSizeForRoom = _totalPlaceableCells * (room.SizeRatio / totalSizeRatio) * MaxSizeGrowRect; // // この部屋の最大許容サイズを事前に計算.
+
+        // bestExpansionsリストは追加セル数の多い順にソートされています。
+        // このリストを先頭から順に探索し、条件を満たす最初の拡張案を採用します。
+        // 利用可能な拡張候補を一つずつ確認します。
+        foreach (var expansion in bestExpansions)
         {
-            // 最も追加セルが多い拡張を適用します。
-            var selectedExpansion = bestExpansions.First();
-            ApplyGrowth(room, selectedExpansion.newRect, selectedExpansion.addedCells);
-            Debug.Log($"Room {room.ID} expanded rectangularly to {selectedExpansion.newRect} adding {selectedExpansion.addedCells} cells. Current size: {room.CurrentSize}");
-            return true;
+            // この拡張を適用した後の部屋のサイズが、事前に計算した最大許容サイズを超えないかを確認する
+            // 条件: (現在の部屋のサイズ + 拡張による追加セル数) <= 最大許容サイズ
+            if (room.CurrentSize + expansion.addedCells <= maxSizeForRoom)
+            {
+                // 条件を満たす最初の拡張（= リストの並び順により最も効率的な拡張）が見つかったので、これを適用します。
+                var selectedExpansion = expansion; // 適用する拡張をこの変数に格納します。
+                ApplyGrowth(room, selectedExpansion.newRect, selectedExpansion.addedCells); // 部屋を実際に拡張する関数を呼び出します。
+                Debug.Log($"Room {room.ID} expanded rectangularly to {selectedExpansion.newRect} adding {selectedExpansion.addedCells} cells. Current size: {room.CurrentSize}"); // 拡張結果をログに出力します。
+                return true; // 拡張に成功したため、trueを返して処理を終了します。
+            }
         }
 
         return false;
@@ -388,7 +406,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
 
 
     /// <summary>
-    /// 実際にグリッド内の部屋を拡張します。
+    ///  対象の領域のセルを部屋のIDで埋め、部屋のサイズ、バウンディングボックスを更新
     /// </summary>
     /// <param name="room">拡張する部屋の定義。</param>
     /// <param name="newRect">新しい矩形領域。</param>

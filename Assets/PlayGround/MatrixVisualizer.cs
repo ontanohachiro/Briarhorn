@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum ToDebug
 {
-    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition
+    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition,GrowRect, GrowLShape
 }
 
 public class MatrixVisualizer : MonoBehaviour
@@ -82,36 +82,36 @@ public class MatrixVisualizer : MonoBehaviour
         var roomDefinitions = new List<RoomDefinition>();
 
         roomDefinitions.Add(new RoomDefinition(
-            id: 0, // 部屋のユニークID。
+            id: 1, // 部屋のユニークID。
             type: RoomType.Entrance, // 部屋の種類。
             ratio: 5f // 要求サイズ比率。
         ));
         roomDefinitions.Add(new RoomDefinition(
-            id: 1,
+            id: 2,
             type: RoomType.LivingRoom,
             ratio: 30f
         ));
 
         roomDefinitions.Add(new RoomDefinition(
-            id: 2,
+            id: 3,
             type: RoomType.Kitchen,
             ratio: 15f
         ));
 
         roomDefinitions.Add(new RoomDefinition(
-            id: 3,
+            id: 4,
             type: RoomType.Bedroom,
             ratio: 25f
         ));
 
         roomDefinitions.Add(new RoomDefinition(
-            id: 4,
+            id: 5,
             type: RoomType.Bathroom,
             ratio: 10f
         ));
 
         roomDefinitions.Add(new RoomDefinition(
-            id: 5,
+            id: 6,
             type: RoomType.Hallway,
             ratio: 15f
         ));
@@ -124,7 +124,7 @@ public class MatrixVisualizer : MonoBehaviour
     {
         // AdjacencyGraphのインスタンスを生成する。
         var graph = new AdjacencyGraph<int, Edge<int>>();
-        for (int i = 0; i < 6; i++)
+        for (int i = 1; i <= 6; i++)
         {
             graph.AddVertex(i);
         }
@@ -132,21 +132,21 @@ public class MatrixVisualizer : MonoBehaviour
         // Edge<int> は、始点と終点の部屋IDを持つ。
         // ここでのIDは、CreateRoomDefinitionListで定義した部屋のIDに対応する。
 
-        // 玄関 (ID:0) は リビング (ID:1) に接続する。
-        graph.AddEdge(new Edge<int>(0, 1));
-        graph.AddEdge(new Edge<int>(1, 0));
-        // リビング (ID:1) は キッチン (ID:2) に接続する。
-        graph.AddEdge(new Edge<int>(1, 2));
-        graph.AddEdge(new Edge<int>(2, 1));
-        // リビング (ID:1) は 廊下 (ID:5) に接続する。
-        graph.AddEdge(new Edge<int>(1, 5));
-        graph.AddEdge(new Edge<int>(5,1));
-        // 廊下 (ID:5) は 寝室 (ID:3) に接続する。
-        graph.AddEdge(new Edge<int>(5, 3));
-        graph.AddEdge(new Edge<int>(3, 5));
-        // 廊下 (ID:5) は バスルーム (ID:4) に接続する。
-        graph.AddEdge(new Edge<int>(5, 4));
-        graph.AddEdge(new Edge<int>(4,5));
+        // 玄関 (ID:1) は リビング (ID:2) に接続する。
+        graph.AddEdge(new Edge<int>(1,2));
+        graph.AddEdge(new Edge<int>(2,1));
+        // リビング (ID:2) は キッチン (ID3) に接続する。
+        graph.AddEdge(new Edge<int>(2,3));
+        graph.AddEdge(new Edge<int>(3,2));
+        // リビング (ID:2) は 廊下 (ID:6) に接続する。
+        graph.AddEdge(new Edge<int>(2,6));
+        graph.AddEdge(new Edge<int>(6,2));
+        // 廊下 (ID:6) は 寝室 (ID:4) に接続する。
+        graph.AddEdge(new Edge<int>(6,4));
+        graph.AddEdge(new Edge<int>(4,6));
+        // 廊下 (ID:6) は バスルーム (ID:5) に接続する。
+        graph.AddEdge(new Edge<int>(6,5));
+        graph.AddEdge(new Edge<int>(5,6));
         // 無向グラフとして扱いたい場合、逆方向の辺も定義する
         return graph;
     }
