@@ -47,23 +47,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
         Debug.Log("Something went wrong on Selectroom");
         return -1;
     }
-    /// <summary>
-    /// 部屋の拡張プロセスを開始する前に、必要な変数を初期化またはリセット.
-    /// 2-0.この時点で、_gridには、0(壁、配置不可),-1(未配置),ID(>0,IDに対応する各部屋のシード位置.各値につき一つしか存在しない)が存在.
-    /// 各部屋のCurrentSizeはちょうど1.
-    /// </summary>
-    private void InitializeRoomExpansion()
-    {
-        _roomsToExpand = new List<RoomDefinition>();
-
-        // 全ての部屋定義を拡張リストに追加し、合計サイズ比率を計算.
-        foreach (var room in _roomDefinitions)
-        {
-            room.Bounds = new RectInt(0, 0, 0, 0); // バウンディングボックスをリセット
-            _roomsToExpand.Add(room);
-        }
-        Debug.Log("Room expansion initialized.");
-    }
 
     /// <summary>
     /// ステップ2: 部屋を拡張するメインのコルーチン.
@@ -72,7 +55,12 @@ public partial class FloorPlanGenerator : MonoBehaviour
     private bool ExpandRooms()
     {
         Debug.Log("Starting room expansion...");
-        InitializeRoomExpansion();// フェーズ0.
+        /// 2-0.この時点で、_gridには、0(壁、配置不可),-1(未配置),ID(>0,IDに対応する各部屋のシード位置.各値につき一つしか存在しない)が存在.
+        _roomsToExpand = new List<RoomDefinition>();
+        foreach (var room in _roomDefinitions)
+        {
+            _roomsToExpand.Add(room);
+        }
         List<RoomDefinition>  _roomsToExpandP1 = _roomsToExpand.ToList();
         List<RoomDefinition> _roomsToExpandP2 = _roomsToExpand.ToList();
         // フェーズ1: 矩形拡張
@@ -151,19 +139,9 @@ public partial class FloorPlanGenerator : MonoBehaviour
     /// <returns>部屋が拡張された場合はtrue、そうでない場合はfalse。</returns>
     private bool GrowRect(RoomDefinition room)
     {
-        // 部屋のバウンディングボックスを取得（初回呼び出し時はシード位置から計算）
-        RectInt currentBounds = room.Bounds;//rectint:x,y,width,height.このとき全部0
-        if (room.CurrentSize == 1 && !room.InitialSeedPosition.HasValue)
-        {
-            Debug.LogError($"Room {room.ID} has CurrentSize 1 but no InitialSeedPosition.");
-            return false;
-        }
-        if (room.CurrentSize == 1 && room.InitialSeedPosition.HasValue && room.Bounds.width == 0) // 初回拡張時
-        {
-            currentBounds = new RectInt(room.InitialSeedPosition.Value.x, room.InitialSeedPosition.Value.y, 1, 1);
-            room.Bounds = currentBounds;
-        }
-        else if (room.CurrentSize == 0) // シードがまだ配置されていない部屋は拡張できません
+        // 部屋のバウンディングボックスを取得
+        RectInt currentBounds = room.Bounds;
+        if (room.CurrentSize == 0) // シードがまだ配置されていない部屋は拡張できません
         {
             Debug.Log("false in growrect");
             return false;
@@ -299,8 +277,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
 
         List<(List<Vector2Int> newCells, int addedCount)> possibleExpansions = new List<(List<Vector2Int>, int)>();
 
-        // 部屋が占めるすべてのセルを探索し、その隣接セルをチェックします。
-        for (int x = 0; x < _gridSize.x; x++)
+        // 部屋が占めるすべてのセルを探索し、その隣接セルをチェック.
+        for (int x = 0; x < _gridSize.x; x++)//room.Boundsで絞ってもいい.
         {
             for (int y = 0; y < _gridSize.y; y++)
             {

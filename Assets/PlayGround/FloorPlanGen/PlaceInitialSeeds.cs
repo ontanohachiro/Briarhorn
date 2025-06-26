@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public partial class FloorPlanGenerator : MonoBehaviour
 {
@@ -10,8 +11,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
     /// </summary>
     private bool PlaceInitialSeeds() 
     {
-        
-       
         Debug.Log("Placing initial seeds...");
         // 各部屋のIDをキーとした重みマップの辞書を初期化します。
         Dictionary<int, float[,]> weightGrids = InitializeWeightGrids();
@@ -24,13 +23,14 @@ public partial class FloorPlanGenerator : MonoBehaviour
         }
 
         // 各部屋のシードを配置します。
-        // ID順で配置することで、再現性のある結果を得やすくします。
-        // 配置順序が結果に影響を与える可能性があるため、ランダム化や特定の順序（例：大きな部屋から）も検討可能です。
-        foreach (var room in _roomDefinitions.OrderBy(r => r.ID)) // RoomDefinitionのIDプロパティでソートして処理します。
+        foreach (var room in _roomDefinitions)
         {
             // 1. この部屋（room）用の重みグリッドを計算します。
             // CalculateWeightsForRoomメソッドは、指定されたroom.IDに基づいて、対応するweightGrids内の重みマップを更新します。
             CalculateWeightsForRoom(room.ID, weightGrids, _distanceToWall);
+        }
+        foreach (var room in _roomDefinitions.OrderBy(r => r.ID)) // RoomDefinitionのIDプロパティでソートして処理します。
+        {
             // 2. 計算された重みマップ（weightGrids[room.ID]）に基づいて、最適なシード位置を選択します。
             Vector2Int? seedPos = SelectBestSeedPosition(weightGrids[room.ID]);
 
@@ -46,7 +46,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
                     matrixToDebug[seedPos.Value.x, seedPos.Value.y] = (float)(room.ID);
                 }
                 // 3. 配置したシードセルの周囲の重みを、他の部屋の重みグリッドで下げます。
-                // これにより、他の部屋のシードが近すぎる位置に配置されるのを防ぎます。
                 // UpdateWeightsAroundSeedメソッドは、配置された部屋（room.ID）以外の全ての部屋の重みマップを更新します。
                 UpdateWeightsAroundSeed(weightGrids, seedPos.Value, room.ID);
             }
@@ -57,6 +56,11 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 ResetGridAndSeeds(); // グリッドとシード情報をリセットします。
                 return false; // シード配置失敗のためfalseを返します。
             }
+        }
+        ExpandTo22(_distanceToWall);
+        if (MVinstance.todebug == ToDebug.ExpandTo22)
+        {
+            matrixToDebug = ConvertMatrix(_grid, "float");
         }
         Debug.Log("Initial seeds placed successfully.");
         return true; // 全てのシードが正常に配置されたためtrueを返します。
@@ -125,7 +129,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 {
                     // 壁に近いほど重みを減らすか、理想距離でピークになるように調整します。
                     // 例: 線形減衰 (壁際で0、idealDistanceFromWall以上で1になるようにクランプ)。
-                    currentWeight *= Mathf.Clamp01(dist / idealDistanceFromWall);
+                    currentWeight += Mathf.Clamp01(dist / idealDistanceFromWall);
                     // 例: ガウシアン的な分布 (idealDistanceで最大値1となるように)。
                     // currentWeight *= Mathf.Exp(-(dist - idealDistanceFromWall) * (dist - idealDistanceFromWall));
                 }
@@ -134,7 +138,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
                     currentWeight = 0f; // 念のため（InitializeGridで0になっているはずですが、ここでも0にします）。
                 }
 
-                // 計算された重みを格納します。重みは負にならないようにします（現在はコメントアウト）。
                 weights[x, y] = Mathf.Max(0, currentWeight);
             }
         }
@@ -267,43 +270,152 @@ public partial class FloorPlanGenerator : MonoBehaviour
     /// <param name="placedRoomId">配置された部屋のID。</param>
     private void UpdateWeightsAroundSeed(Dictionary<int, float[,]> weightGrids, Vector2Int seedPos, int placedRoomId)
     {
-        // 重みを下げる範囲の半径を設定から取得します。
-        int radius = settings.SeedExclusionRadius;
+        // --- 1. 引力プロセス (Attraction Process) ---
+        // 先に、隣接が必要な部屋に引力を適用します。
+        int inclusionRadius = settings.SeedInclusionRadius;
+        float attractionWeight = settings.SeedPlacementAdjacencyBonus;
 
-        // 指定された半径内の正方形領域を走査します。
-        for (int dx = -radius; dx <= radius; dx++)
+        // 隣接が必要な部屋の重みマップのみを更新
+        foreach (var kvp in weightGrids)
         {
-            for (int dy = -radius; dy <= radius; dy++)
-            {
-                // 円形の範囲にする場合は、以下のコメントアウトを解除し、条件を追加します。
-                // if (dx * dx + dy * dy > radius * radius) continue;
+            int otherRoomId = kvp.Key;
+            if (otherRoomId == placedRoomId) continue;
 
-                // シード位置からの相対位置を計算します。
+            // _ConnectivityGraph を使って隣接関係を確認
+            if (_ConnectivityGraph.ContainsEdge(placedRoomId, otherRoomId))
+            {
+                // 引力半径の範囲を走査
+                for (int dx = -inclusionRadius; dx <= inclusionRadius; dx++)
+                {
+                    for (int dy = -inclusionRadius; dy <= inclusionRadius; dy++)
+                    {
+                        if (dx == 0 && dy == 0) continue;
+                        Vector2Int pos = seedPos + new Vector2Int(dx, dy);
+
+                        if (pos.x >= 0 && pos.x < _gridSize.x && pos.y >= 0 && pos.y < _gridSize.y)
+                        {
+                            // 有効なセル（配置可能）であれば、重みを加算
+                            if (_grid[pos.x, pos.y] == -1)
+                            {
+                                kvp.Value[pos.x, pos.y] += attractionWeight;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // --- 2. 斥力プロセス (Repulsion Process) ---
+        // 次に、全ての他部屋に対して、斥力を適用します。
+        // これにより、引力範囲と斥力範囲が重なる場合、斥力が優先（上書き）されます。
+        int exclusionRadius = settings.SeedExclusionRadius;
+        for (int dx = -exclusionRadius; dx <= exclusionRadius; dx++)
+        {
+            for (int dy = -exclusionRadius; dy <= exclusionRadius; dy++)
+            {
+                if (dx == 0 && dy == 0) continue;
                 Vector2Int pos = seedPos + new Vector2Int(dx, dy);
 
-                // 計算された位置がグリッド範囲内であるかを確認します。
                 if (pos.x >= 0 && pos.x < _gridSize.x && pos.y >= 0 && pos.y < _gridSize.y)
                 {
-                    // 他の全ての部屋（配置された部屋自身を除く）の重みグリッドに対して処理を行います。
                     foreach (var kvp in weightGrids)
                     {
-                        int otherRoomId = kvp.Key; // 他の部屋のID。
-                        // 配置された部屋自身のグリッドは変更しません。
-                        if (otherRoomId != placedRoomId)
+                        if (kvp.Key != placedRoomId)
                         {
-                            // 他の部屋の重みマップにおいて、指定範囲内のセルの重みをfloat.MinValueに設定し、実質的に選択不可にします。
                             kvp.Value[pos.x, pos.y] = float.MinValue;
                         }
                     }
                 }
             }
         }
-        Debug.Log($"Updated weights around {seedPos} for other rooms."); 
+        Debug.Log($"Updated weights around {seedPos} for other rooms.");
     }
 
-
     /// <summary>
-    /// PlaceInitialSeedsが失敗した場合などにグリッドとシード情報を初期状態に戻す,1-4
+    /// 配置されたシードを、2×2の部屋に拡張する関数。1-4
+    /// 拡張に成功した場合、_grid[,]の更新、room.Bounds,room.currentsize,room.InitialSeedPositionの更新を行う。
+    /// </summary>
+    private void ExpandTo22(float[,] distancetowall)
+    {
+        // _roomDefinitionsをIDの昇順に並べ替えて、各部屋を処理します。
+        foreach (var room in _roomDefinitions.OrderBy(r => r.ID))
+        {
+            // InitialSeedPositionはVector2Int型で、部屋の中心ではなく、2x2の部屋の左下の開始点として扱います。
+            int startX = room.InitialSeedPosition.Value.x;
+            int startY = room.InitialSeedPosition.Value.y;
+
+            int bestOffsetX = 0;
+            int bestOffsetY = 0;
+            float maxDistanceSum = -1f; // 壁までの距離の合計の最大値
+
+            // 候補となる2x2の部屋の左下の開始点を4パターン試します
+            // currentSeedPositionが2x2の部屋のどこかに属しているという前提で、その2x2の左下の座標を探索
+            bool canExpandTo22 = false;
+            for (int offsetX = -1; offsetX <= 0; offsetX++) // X方向のオフセット（-1または0）
+            {
+                for (int offsetY = -1; offsetY <= 0; offsetY++) // Y方向のオフセット（-1または0）
+                {
+                    int currentRoomStartX = startX + offsetX;
+                    int currentRoomStartY = startY + offsetY;
+
+                    // 2x2の部屋がグリッドの範囲内に収まるかを確認
+                    if (currentRoomStartX >= 0 && currentRoomStartY >= 0 &&
+                        currentRoomStartX + 1 < _gridSize.x && currentRoomStartY + 1 < _gridSize.y)
+                    {
+                        float currentDistanceSum = 0f;
+                        bool canPlaceRoom = true;
+
+                        // 2x2の各マスについて評価
+                        for (int x = 0; x < 2; x++)
+                        {
+                            for (int y = 0; y < 2; y++)
+                            {
+                                int targetX = currentRoomStartX + x;
+                                int targetY = currentRoomStartY + y;
+
+                                // 部屋の配置が可能か（例: 既に他の部屋で占有されていないか、壁でないか
+                                if (_grid[targetX, targetY] != -1 && _grid[targetX, targetY] != room.ID)
+                                {
+                                    canPlaceRoom = false; // グリッド範囲外
+                                    break;
+                                }
+                                currentDistanceSum += distancetowall[targetX, targetY];
+                            }
+                            if (!canPlaceRoom) break;
+                        }
+
+                        // 配置可能で、かつこれまでの最大距離合計よりも大きい場合、最適な位置を更新
+                        if (canPlaceRoom && currentDistanceSum > maxDistanceSum)
+                        {
+                            canExpandTo22 = true;//一度でも2*2に拡張できる組み合わせが見つかればtrueになる
+                            maxDistanceSum = currentDistanceSum;
+                            bestOffsetX = offsetX;
+                            bestOffsetY = offsetY;
+                        }
+                    }
+                }
+            }
+            //拡張できるなら、 最適な2x2の部屋の開始点を決定し、_grid[,]、room.Bounds,room.currentsize,room.InitialSeedPositionの更新
+            if (canExpandTo22)
+            {
+                room.InitialSeedPosition = new Vector2Int(startX + bestOffsetX, startY + bestOffsetY);
+                for (int x = 0;x < 2; x++)
+                {
+                    for (int y = 0; y < 2; y++)
+                    {
+                        int posx = room.InitialSeedPosition.Value.x + x;
+                        int posy = room.InitialSeedPosition.Value.y + y;
+                        _grid[posx, posy] = room.ID;
+                    }
+                }
+                room.CurrentSize = 4;
+                room.Bounds = new RectInt(room.InitialSeedPosition.Value.x, room.InitialSeedPosition.Value.y, 2, 2);
+            }
+            else Debug.Log($" failed to Expand room{room.ID} To22");
+        }
+    }
+    /// <summary>
+    /// PlaceInitialSeedsが失敗した場合などにグリッドとシード情報を初期状態に戻す,1-5
     /// </summary>
     private void ResetGridAndSeeds()
     {

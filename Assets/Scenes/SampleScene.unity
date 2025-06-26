@@ -151,15 +151,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 792843fdc2965ac4f9353ddb186452f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  todebug: 2
+  mainFontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  todebug: 4
   inputSettings:
     MaxGenerationAttempts: 0
     SeedPlacementWeightDistanceFactor: 0
     SeedPlacementAdjacencyBonus: 0
     SeedExclusionRadius: 0
+    SeedInclusionRadius: 0
   FPG_instance: {fileID: 366539257}
-  xsize: 10
-  ysize: 10
+  xsize: 15
+  ysize: 15
 --- !u!4 &35251555
 Transform:
   m_ObjectHideFlags: 0
@@ -750,12 +752,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a63a4f7f6d5b71448edc44169a3115e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxSizeGrowRect: 0.5
+  MVinstance: {fileID: 35251554}
   settings:
     MaxGenerationAttempts: 10
     SeedPlacementWeightDistanceFactor: 0.5
     SeedPlacementAdjacencyBonus: 1
     SeedExclusionRadius: 1
-  MVinstance: {fileID: 35251554}
+    SeedInclusionRadius: 0
 --- !u!4 &366539258
 Transform:
   m_ObjectHideFlags: 0

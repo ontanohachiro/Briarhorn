@@ -63,18 +63,21 @@ public class FloorPlanSettings//入力.
     public int MaxGenerationAttempts = 10; // 隣接制約を満たすための最大試行回数
     public float SeedPlacementWeightDistanceFactor = 0.5f; // 外壁からの距離に基づく重み付け係数 
     public float SeedPlacementAdjacencyBonus = 1.0f; // 隣接制約のある部屋の近くの重みボーナス
-    public int SeedExclusionRadius = 1; // 配置されたシードの周囲で他のシードを配置しない半径
+    public int SeedExclusionRadius = 2; // 配置されたシードの周囲で他のシードを配置しない半径
+    public int SeedInclusionRadius = 4; //隣接制約のある部屋の近くの重みボーナスを適応する半径. SIR > SER
 
-   public  FloorPlanSettings(int[,] footprint, List<RoomDefinition> RDlist, AdjacencyGraph<int, Edge<int>> Graph, int MGA =10, float SPWDF = 0.5f, float SPAB= 1.0f,int SER = 1) 
+    public  FloorPlanSettings(int[,] footprint, List<RoomDefinition> RDlist, AdjacencyGraph<int, Edge<int>> Graph, int MGA = 10, float SPWDF = 0.5f, float SPAB = 1.0f, int SER = 1, int SIR = 2)
     {
+        //配置可能マスが(SER+1)^2 * 部屋数より小さいと部屋が配置不可能になる可能性が存在する.
         InputFootprintGrid = footprint;
         RoomDefinitionsList = RDlist;
         ConnectivityGraph = Graph;
         MaxGenerationAttempts = MGA;
         SeedPlacementWeightDistanceFactor = SPWDF;
         SeedPlacementAdjacencyBonus = SPAB;
-        SeedExclusionRadius = SER;
-    }
+        // SeedExclusionRadius = SER;
+        //SeedInclusionRadius = SIR;
+     }
 }
 
 // 生成されたフロアプランの出力
@@ -111,12 +114,12 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         isconfigured = true;
     }
     private Vector2Int _gridSize;
+    public AdjacencyGraph<int, Edge<int>> _ConnectivityGraph;
 
     //実行中に変化するプロパティ
     private int[,] _grid; // 0: 建物外/壁/穴, -1: 配置可能だが未割り当て, >0: 部屋ID .出力に使用.
     private List<RoomDefinition> _roomDefinitions;//部屋の特性.
     private int _totalPlaceableCells = 0; // 配置可能なセルの総数
-    private float totalSizeRatio = 0.0f;//各部屋のサイズ比の合計.
 
     /// <summary>
     /// フロアプラン生成のメイン関数
@@ -130,6 +133,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         }
 
         _roomDefinitions = settings.RoomDefinitionsList;//よくないコピーの仕方.
+        _ConnectivityGraph = settings.ConnectivityGraph;
 
         GeneratedFloorPlan bestPlan = null;
         float bestScore = float.MinValue; // スコアリング実装時に使用
@@ -170,6 +174,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     public void DebugAttempt()
     {
         _roomDefinitions = settings.RoomDefinitionsList;
+        _ConnectivityGraph = settings.ConnectivityGraph;
         AttemptGeneration();
     }
     /// <summary>

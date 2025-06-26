@@ -6,11 +6,12 @@ using UnityEngine;
 
 public enum ToDebug
 {
-    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition,GrowRect, GrowLShape
+    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition, ExpandTo22,GrowRect, GrowLShape
 }
 
 public class MatrixVisualizer : MonoBehaviour
 {
+    public TMP_FontAsset mainFontAsset;
     public ToDebug todebug;
     private GameObject Parent = null;
     public FloorPlanSettings inputSettings;
@@ -84,7 +85,7 @@ public class MatrixVisualizer : MonoBehaviour
         roomDefinitions.Add(new RoomDefinition(
             id: 1, // 部屋のユニークID。
             type: RoomType.Entrance, // 部屋の種類。
-            ratio: 5f // 要求サイズ比率。
+            ratio: 10f // 要求サイズ比率。
         ));
         roomDefinitions.Add(new RoomDefinition(
             id: 2,
@@ -160,17 +161,26 @@ public class MatrixVisualizer : MonoBehaviour
         // PrimitiveType.Cube で作成されたGameObjectにはRendererコンポーネントが自動的にアタッチされます
         Renderer renderer = cube.GetComponent<Renderer>();
 
-        // weightの値に基づいて色を決定し、マテリアルに設定
-        // weightの取りうる具体的な値の範囲が不明なため、ここでは簡単のために0から1の範囲にクランプして使用します。
-        // もしweightが特定の範囲 (例: minWeight から maxWeight) を取る場合は、
-        // float t = Mathf.InverseLerp(minWeight, maxWeight, weight); のように正規化してからColor.Lerpを使うと良いでしょう。
-        float normalizedWeight = Mathf.Clamp01(weight); // weightを0から1の範囲にクランプ
-
-        // weightが0に近いほど Color.blue, weightが1に近いほど Color.red になります
-        Color cubeColor = Color.Lerp(Color.black, Color.white, normalizedWeight);
-
-        // キューブのマテリアルの色を設定
-        // material は新しいインスタンスを生成するため、他のオブジェクトに影響しません。
+        Color cubeColor;
+        Color textColor;
+        // weightの値に応じてキューブとテキストの色を決定します
+        if (weight > 0)
+        {
+            cubeColor = Color.white;
+            textColor = Color.HSVToRGB((weight * 0.1f) % 1.0f, 0.7f, 0.7f);
+        }
+        else if ((int)weight == 0)
+        {
+            // weightが0の時（-1 < weight < 1 の範囲）、キューブは黒、テキストは白に設定
+            cubeColor = Color.black;
+            textColor = Color.white;
+        }
+        else //weight < 0
+        {
+            // weightが-1の時（-2 < weight <= -1 の範囲）、キューブは白、テキストは黒に設定
+            cubeColor = Color.white;
+            textColor = Color.black;
+        }
         renderer.material.color = cubeColor;
 
         string text = weight.ToString();
@@ -184,10 +194,20 @@ public class MatrixVisualizer : MonoBehaviour
 
         // TextMeshProコンポーネントを追加
         TextMeshPro textMeshPro = textObj.AddComponent<TextMeshPro>();
+        if (mainFontAsset != null)
+        {
+            textMeshPro.font = mainFontAsset;
+        }
+        else
+        {
+            // フォントが設定されていない場合はエラーを出し、処理を中断します
+            Debug.LogError("Main Font Assetが設定されていません！インスペクタから設定してください。");
+            return;
+        }
         textMeshPro.text = text;
-        textMeshPro.fontSize =40;
+        textMeshPro.fontSize =50;
         textMeshPro.alignment = TextAlignmentOptions.Center;
-        textMeshPro.color = Color.black;
+        textMeshPro.color = textColor;
 
         // テキストのスケールを調整
         textObj.transform.localScale = Vector3.one * 0.1f;
