@@ -6,8 +6,14 @@ using UnityEngine;
 public partial class FloorPlanGenerator : MonoBehaviour
 {
     public float MaxSizeGrowRect = 0.5f;//GrowRectで拡張される部屋の限界.0.5なら、全ての部屋が拡張されても建物の半分のサイズとなる.
-    // 追加するプライベート変数
-    private List<RoomDefinition> _roomsToExpand; // 拡張対象の部屋のリスト
+   
+    private enum ExpansionType  {   Up, Down, Right, Left, Lshape }
+    private bool[,] IsExpanded;//最初は設定されていない.GrowRect,GrowShapeの直前でそれぞれ初期化.
+    private void SetIsExpanded (int roomNum)
+    {
+        IsExpanded = new bool[roomNum,5];//5はUp, Down, Right, Left, Lshape,ただしLshapeはGrowRectでは使われない.
+        //RoomIdは1から始まることに注意.
+    }
     /// <summary>
     /// SizeRatioに従って確率的に部屋を選択し、リスト内でのインデックスを返す.
     /// </summary>
@@ -55,14 +61,9 @@ public partial class FloorPlanGenerator : MonoBehaviour
     private bool ExpandRooms()
     {
         Debug.Log("Starting room expansion...");
-        /// 2-0.この時点で、_gridには、0(壁、配置不可),-1(未配置),ID(>0,IDに対応する各部屋のシード位置.各値につき一つしか存在しない)が存在.
-        _roomsToExpand = new List<RoomDefinition>();
-        foreach (var room in _roomDefinitions)
-        {
-            _roomsToExpand.Add(room);
-        }
-        List<RoomDefinition>  _roomsToExpandP1 = _roomsToExpand.ToList();
-        List<RoomDefinition> _roomsToExpandP2 = _roomsToExpand.ToList();
+        List<RoomDefinition>  _roomsToExpandP1 = _roomDefinitions.ToList();
+        List<RoomDefinition> _roomsToExpandP2 = _roomDefinitions.ToList();
+        SetIsExpanded(_roomDefinitions.Count);
         // フェーズ1: 矩形拡張
         Debug.Log("Phase 1: Rectangular Expansion");
         int iterationCount = 0;
@@ -73,12 +74,12 @@ public partial class FloorPlanGenerator : MonoBehaviour
             var room = _roomsToExpandP1[SelectRoom(_roomsToExpandP1)];
             if (GrowRect(room)) // 部屋を矩形に拡張できるか試みます。
                 {
-                     // 部屋が拡張できた場合、引き続き _roomsToExpand に残しておく
+                     // 部屋が拡張できた場合、引き続き _roomDefinitions に残しておく
                 }
                 else // 拡張できなかった場合 (canGrow -- "いいえ" --> removeRoom)
                 {
                     // 拡張できなくなった部屋を候補リストから除外します。
-                    // _roomsToExpand から直接削除します。
+                    // _roomDefinitions から直接削除します。
                     _roomsToExpandP1.Remove(room);
                 }
             iterationCount++;
@@ -95,6 +96,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         }
 
         // フェーズ2: L字型拡張
+        SetIsExpanded(_roomDefinitions.Count);
         Debug.Log("Phase 2: L-Shape Expansion");
         iterationCount = 0; // イテレーションカウントをリセットします。
         while (_roomsToExpandP2.Any()) //_roomsToExpandに部屋がある限り.
@@ -108,7 +110,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 else // 拡張できなかった場合
                 {
                     // 拡張できなくなった部屋を候補リストから除外します。
-                    // _roomsToExpand から直接削除します。
+                    // _roomDefinitions から直接削除します。
                     _roomsToExpandP2.Remove(room);
                 }
             
@@ -148,86 +150,94 @@ public partial class FloorPlanGenerator : MonoBehaviour
         }
 
         // 拡張可能な方向と最大の長方形領域を見つけます。
-        List<(RectInt newRect, int addedCells)> possibleExpansions = new List<(RectInt, int)>();
+        List<(RectInt newRect, int addedCells, ExpansionType type)> possibleExpansions = new List<(RectInt, int, ExpansionType)>();
 
         // 上方向への拡張
-        for (int h = 1; ; h++) // 新しい高さ
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Up] == false)
         {
-            if (currentBounds.yMax + h > _gridSize.y) break; // グリッドのY方向の境界チェック.yMaxはy+heightを返す.
-
-            bool canExpandRow = true;
-            for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)//xからx+width-1までの値をとる.
+            for (int h = 1; ; h++) // 新しい高さ
             {
-                if (_grid[x, currentBounds.yMax + h - 1] != -1) // 未割り当ての配置可能セルであることmaxでheightやwidthを足すとき-1.
-                {
-                    canExpandRow = false;
-                    break;
-                }
-            }
-            if (!canExpandRow) break;
-            //ここに到達したなら、(x,x+width-1,y,y+height+h-1)までのマスは-1であり、上方向に追加する余地が存在する.
-            possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.y, currentBounds.width, currentBounds.height + h), currentBounds.width * h));
-            //矩形情報と増加する面積をリストに追加.複数のhについて存在しうる.
-        }
+                if (currentBounds.yMax + h > _gridSize.y) break; // グリッドのY方向の境界チェック.yMaxはy+heightを返す.
 
+                bool canExpandRow = true;
+                for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)//xからx+width-1までの値をとる.
+                {
+                    if (_grid[x, currentBounds.yMax + h - 1] != -1) // 未割り当ての配置可能セルであることmaxでheightやwidthを足すとき-1.
+                    {
+                        canExpandRow = false;
+                        break;
+                    }
+                }
+                if (!canExpandRow) break;
+                //ここに到達したなら、(x,x+width-1,y,y+height+h-1)までのマスは-1であり、上方向に追加する余地が存在する.
+                possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.yMax, currentBounds.width, h), currentBounds.width * h, ExpansionType.Up));
+                //矩形情報と増加する面積をリストに追加.複数のhについて存在しうる.
+            }
+        }
         // 下方向への拡張
-        for (int h = 1; ; h++) // 新しい高さ
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Down] == false)
         {
-            if (currentBounds.yMin - h < 0) break; // グリッドのY方向の境界チェック
-
-            bool canExpandRow = true;
-            for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)
+            for (int h = 1; ; h++) // 新しい高さ
             {
-                if (_grid[x, currentBounds.yMin - h] != -1) // 未割り当ての配置可能セルであること
+                if (currentBounds.yMin - h < 0) break; // グリッドのY方向の境界チェック
+
+                bool canExpandRow = true;
+                for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)
                 {
-                    canExpandRow = false;
-                    break;
+                    if (_grid[x, currentBounds.yMin - h] != -1) // 未割り当ての配置可能セルであること
+                    {
+                        canExpandRow = false;
+                        break;
+                    }
                 }
+                if (!canExpandRow) break;
+
+                possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.y - h, currentBounds.width, h), currentBounds.width * h, ExpansionType.Down));
             }
-            if (!canExpandRow) break;
-
-            possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.y - h, currentBounds.width, currentBounds.height + h), currentBounds.width * h));
         }
-
 
         // 右方向への拡張
-        for (int w = 1; ; w++) // 新しい幅
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Right] == false)
         {
-            if (currentBounds.xMax + w > _gridSize.x) break; // グリッドのX方向の境界チェック
-
-            bool canExpandCol = true;
-            for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
+            for (int w = 1; ; w++) // 新しい幅
             {
-                if (_grid[currentBounds.xMax + w - 1, y] != -1) // 未割り当ての配置可能セルであること
+                if (currentBounds.xMax + w > _gridSize.x) break; // グリッドのX方向の境界チェック
+
+                bool canExpandCol = true;
+                for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
                 {
-                    canExpandCol = false;
-                    break;
+                    if (_grid[currentBounds.xMax + w - 1, y] != -1) // 未割り当ての配置可能セルであること
+                    {
+                        canExpandCol = false;
+                        break;
+                    }
                 }
+                if (!canExpandCol) break;
+
+                possibleExpansions.Add((new RectInt(currentBounds.xMax, currentBounds.y, w, currentBounds.height), currentBounds.height * w, ExpansionType.Right));
             }
-            if (!canExpandCol) break;
-
-            possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.y, currentBounds.width + w, currentBounds.height), currentBounds.height * w));
         }
-
         // 左方向への拡張
-        for (int w = 1; ; w++) // 新しい幅
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Left] == false)
         {
-            if (currentBounds.xMin - w < 0) break; // グリッドのX方向の境界チェック
-
-            bool canExpandCol = true;
-            for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
+            for (int w = 1; ; w++) // 新しい幅
             {
-                if (_grid[currentBounds.xMin - w, y] != -1) // 未割り当ての配置可能セルであること
+                if (currentBounds.xMin - w < 0) break; // グリッドのX方向の境界チェック
+
+                bool canExpandCol = true;
+                for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
                 {
-                    canExpandCol = false;
-                    break;
+                    if (_grid[currentBounds.xMin - w, y] != -1) // 未割り当ての配置可能セルであること
+                    {
+                        canExpandCol = false;
+                        break;
+                    }
                 }
+                if (!canExpandCol) break;
+
+                possibleExpansions.Add((new RectInt(currentBounds.x - w, currentBounds.y, w, currentBounds.height), currentBounds.height * w, ExpansionType.Left));
             }
-            if (!canExpandCol) break;
-
-            possibleExpansions.Add((new RectInt(currentBounds.x - w, currentBounds.y, currentBounds.width + w, currentBounds.height), currentBounds.height * w));
         }
-
 
         // 最も大きく拡張できる機会を選択します。
         // 複数ある場合はランダムに選択することで多様性を確保します。
@@ -237,7 +247,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
             .ThenBy(e => _random.Next()) // 同じ追加セル数の場合はランダム
             .ToList();
 
-        var totalSizeRatio = _roomsToExpand.Sum(r => r.SizeRatio);
+        var totalSizeRatio = _roomDefinitions.Sum(r => r.SizeRatio);
         var maxSizeForRoom = _totalPlaceableCells * (room.SizeRatio / totalSizeRatio) * MaxSizeGrowRect; // // この部屋の最大許容サイズを事前に計算.
 
         // bestExpansionsリストは追加セル数の多い順にソートされています。
@@ -252,8 +262,9 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 // 条件を満たす最初の拡張（= リストの並び順により最も効率的な拡張）が見つかったので、これを適用します。
                 var selectedExpansion = expansion; // 適用する拡張をこの変数に格納します。
                 ApplyGrowth(room, selectedExpansion.newRect, selectedExpansion.addedCells); // 部屋を実際に拡張する関数を呼び出します。
-                Debug.Log($"Room {room.ID} expanded rectangularly to {selectedExpansion.newRect} adding {selectedExpansion.addedCells} cells. Current size: {room.CurrentSize}"); // 拡張結果をログに出力します。
-                return true; // 拡張に成功したため、trueを返して処理を終了します。
+                IsExpanded[room.ID-1, (int)selectedExpansion.type] = true;
+                Debug.Log($"Room {room.ID} expanded rectangularly to {selectedExpansion.newRect} adding {selectedExpansion.addedCells} cells. Current size: {room.CurrentSize},ExpansionType: {selectedExpansion.type}"); // 拡張結果をログに出力します。
+                return true; 
             }
         }
 
@@ -262,132 +273,147 @@ public partial class FloorPlanGenerator : MonoBehaviour
 
     /// <summary>
     /// 部屋をL字型に拡張しようとします。
-    /// 論文の「GrowLShape」に相当し、非矩形の拡張を許可します。
     /// </summary>
     /// <param name="room">拡張する部屋の定義。</param>
     /// <returns>部屋が拡張された場合はtrue、そうでない場合はfalse。</returns>
     private bool GrowLShape(RoomDefinition room)
     {
-        // 現在の部屋の境界に基づいて、拡張可能なL字型領域を見つけます。
-        // これはGrowRectよりも複雑で、既存の部屋の隣接セルから新しい矩形領域を探すことになります。
-        // 実際の実装では、部屋の境界を構成するすべてのセルを調べ、それぞれの隣接する空のセルから矩形拡張を試みることで実現できます。
-
-        // 簡略化のため、ここでは部屋の既存の各セルに隣接する未割り当てのセルを探し、
-        // そこから可能な限り最大の1xNまたはNx1の直線的な拡張を試みます。
-
-        List<(List<Vector2Int> newCells, int addedCount)> possibleExpansions = new List<(List<Vector2Int>, int)>();
-
-        // 部屋が占めるすべてのセルを探索し、その隣接セルをチェック.
-        for (int x = 0; x < _gridSize.x; x++)//room.Boundsで絞ってもいい.
+        // 部屋のバウンディングボックスを取得
+        RectInt currentBounds = room.Bounds;
+        if (room.CurrentSize == 0) // シードがまだ配置されていない部屋は拡張できません
         {
-            for (int y = 0; y < _gridSize.y; y++)
+            Debug.Log("false in growrect");
+            return false;
+        }
+       
+
+        // 拡張情報.
+        List<(RectInt fullLineRect ,RectInt partialLineRect, int addedCells, ExpansionType type, bool isLshaped)> possibleExpansions = new List<(RectInt, RectInt, int, ExpansionType, bool)>();
+
+        // 上
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Up] == false)
+        {
+            for (int h = 1; ; h++) // 新しい高さ
             {
-                if (_grid[x, y] == room.ID) // 部屋のセルである場合
+                if (currentBounds.yMax + h > _gridSize.y) break; // グリッドのY方向の境界チェック.yMaxはy+heightを返す.
+
+                bool canExpandRow = true;
+                for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)//xからx+width-1までの値をとる.
                 {
-                    // このセルから四方に隣接する未割り当てセルを探します。
-                    Vector2Int currentCell = new Vector2Int(x, y);
-
-                    // 各方向 (上下左右) に直線的に拡張を試みます。
-                    foreach (var offset in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left })
+                    if (_grid[x, currentBounds.yMax + h - 1] != -1) // 未割り当ての配置可能セルであることmaxでheightやwidthを足すとき-1.
                     {
-                        List<Vector2Int> newSegment = new List<Vector2Int>();
-                        Vector2Int testPos = currentCell + offset;
-                        int count = 0;
-
-                        while (testPos.x >= 0 && testPos.x < _gridSize.x &&
-                               testPos.y >= 0 && testPos.y < _gridSize.y &&
-                               _grid[testPos.x, testPos.y] == -1) // 未割り当ての配置可能セル
-                        {
-                            newSegment.Add(testPos);
-                            count++;
-                            testPos += offset;
-                        }
-
-                        if (count > 0)
-                        {
-                            possibleExpansions.Add((newSegment, count));
-                        }
+                        canExpandRow = false;
+                        break;
                     }
                 }
+                if (!canExpandRow) break;
+                //ここに到達したなら、(x,x+width-1,y,y+height+h-1)までのマスは-1であり、上方向に追加する余地が存在する.
+                possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.yMax, currentBounds.width, h), currentBounds.width * h, ExpansionType.Up));
+                //矩形情報と増加する面積をリストに追加.複数のhについて存在しうる.
+            }
+        }
+        // 下方向への拡張
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Down] == false)
+        {
+            for (int h = 1; ; h++) // 新しい高さ
+            {
+                if (currentBounds.yMin - h < 0) break; // グリッドのY方向の境界チェック
+
+                bool canExpandRow = true;
+                for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)
+                {
+                    if (_grid[x, currentBounds.yMin - h] != -1) // 未割り当ての配置可能セルであること
+                    {
+                        canExpandRow = false;
+                        break;
+                    }
+                }
+                if (!canExpandRow) break;
+
+                possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.y - h, currentBounds.width, h), currentBounds.width * h, ExpansionType.Down));
+            }
+        }
+
+        // 右方向への拡張
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Right] == false)
+        {
+            for (int w = 1; ; w++) // 新しい幅
+            {
+                if (currentBounds.xMax + w > _gridSize.x) break; // グリッドのX方向の境界チェック
+
+                bool canExpandCol = true;
+                for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
+                {
+                    if (_grid[currentBounds.xMax + w - 1, y] != -1) // 未割り当ての配置可能セルであること
+                    {
+                        canExpandCol = false;
+                        break;
+                    }
+                }
+                if (!canExpandCol) break;
+
+                possibleExpansions.Add((new RectInt(currentBounds.xMax, currentBounds.y, w, currentBounds.height), currentBounds.height * w, ExpansionType.Right));
+            }
+        }
+        // 左方向への拡張
+        if (IsExpanded[room.ID - 1, (int)ExpansionType.Left] == false)
+        {
+            for (int w = 1; ; w++) // 新しい幅
+            {
+                if (currentBounds.xMin - w < 0) break; // グリッドのX方向の境界チェック
+
+                bool canExpandCol = true;
+                for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
+                {
+                    if (_grid[currentBounds.xMin - w, y] != -1) // 未割り当ての配置可能セルであること
+                    {
+                        canExpandCol = false;
+                        break;
+                    }
+                }
+                if (!canExpandCol) break;
+
+                possibleExpansions.Add((new RectInt(currentBounds.x - w, currentBounds.y, w, currentBounds.height), currentBounds.height * w, ExpansionType.Left));
             }
         }
 
         // 最も大きく拡張できる機会を選択します。
+        // 複数ある場合はランダムに選択することで多様性を確保します。
         var bestExpansions = possibleExpansions
-            .Where(e => e.addedCount > 0)
-            .OrderByDescending(e => e.addedCount)
-            .ThenBy(e => _random.Next())
+            .Where(e => e.addedCells > 0) // 追加セルが0より大きいもののみ
+            .OrderByDescending(e => e.addedCells) // 追加セル数でソート
+            .ThenBy(e => _random.Next()) // 同じ追加セル数の場合はランダム
             .ToList();
 
-        if (bestExpansions.Any())
+        var totalSizeRatio = _roomDefinitions.Sum(r => r.SizeRatio);
+        var maxSizeForRoom = _totalPlaceableCells * (room.SizeRatio / totalSizeRatio) * MaxSizeGrowRect; // // この部屋の最大許容サイズを事前に計算.
+
+        // bestExpansionsリストは追加セル数の多い順にソートされています。
+        // このリストを先頭から順に探索し、条件を満たす最初の拡張案を採用します。
+        // 利用可能な拡張候補を一つずつ確認します。
+        foreach (var expansion in bestExpansions)
         {
-            // 最も追加セルが多い拡張を適用します。
-            var selectedExpansion = bestExpansions.First();
-            foreach (var cell in selectedExpansion.newCells)
+            // この拡張を適用した後の部屋のサイズが、事前に計算した最大許容サイズを超えないかを確認する
+            // 条件: (現在の部屋のサイズ + 拡張による追加セル数) <= 最大許容サイズ
+            if (room.CurrentSize + expansion.addedCells <= maxSizeForRoom)
             {
-                _grid[cell.x, cell.y] = room.ID;
-                room.CurrentSize++;
+                // 条件を満たす最初の拡張（= リストの並び順により最も効率的な拡張）が見つかったので、これを適用します。
+                var selectedExpansion = expansion; // 適用する拡張をこの変数に格納します。
+                ApplyGrowth(room, selectedExpansion.newRect, selectedExpansion.addedCells); // 部屋を実際に拡張する関数を呼び出します。
+                IsExpanded[room.ID - 1, (int)selectedExpansion.type] = true;
+                Debug.Log($"Room {room.ID} expanded rectangularly to {selectedExpansion.newRect} adding {selectedExpansion.addedCells} cells. Current size: {room.CurrentSize},ExpansionType: {selectedExpansion.type}"); // 拡張結果をログに出力します。
+                return true;
             }
-            // 部屋のBoundsを更新する必要があります。
-            UpdateRoomBounds(room);
-            Debug.Log($"Room {room.ID} expanded L-shapely, adding {selectedExpansion.addedCount} cells. Current size: {room.CurrentSize}");
-            return true;
         }
 
         return false;
     }
 
-
     /// <summary>
-    /// 部屋の境界（Bounds）を更新する補助関数。
-    /// </summary>
-    /// <param name="room">更新する部屋の定義。</param>
-    private void UpdateRoomBounds(RoomDefinition room)
-    {
-        int minX = _gridSize.x, minY = _gridSize.y, maxX = -1, maxY = -1;
-        bool foundAnyCell = false;
-
-        for (int x = 0; x < _gridSize.x; x++)
-        {
-            for (int y = 0; y < _gridSize.y; y++)
-            {
-                if (_grid[x, y] == room.ID)
-                {
-                    if (!foundAnyCell)
-                    {
-                        minX = x;
-                        maxX = x;
-                        minY = y;
-                        maxY = y;
-                        foundAnyCell = true;
-                    }
-                    else
-                    {
-                        minX = Mathf.Min(minX, x);
-                        maxX = Mathf.Max(maxX, x);
-                        minY = Mathf.Min(minY, y);
-                        maxY = Mathf.Max(maxY, y);
-                    }
-                }
-            }
-        }
-
-        if (foundAnyCell)
-        {
-            room.Bounds = new RectInt(minX, minY, maxX - minX + 1, maxY - minY + 1);
-        }
-        else
-        {
-            room.Bounds = new RectInt(0, 0, 0, 0); // セルが見つからない場合は無効な境界を設定
-        }
-    }
-
-
-    /// <summary>
-    ///  対象の領域のセルを部屋のIDで埋め、部屋のサイズ、バウンディングボックスを更新
+    ///  対象の領域(newRect)のセルを部屋のIDで埋め、部屋のサイズ、バウンディングボックスを更新
     /// </summary>
     /// <param name="room">拡張する部屋の定義。</param>
-    /// <param name="newRect">新しい矩形領域。</param>
+    /// <param name="newRect">追加された新しい矩形領域。</param>
     /// <param name="addedCells">追加されるセルの数。</param>
     private void ApplyGrowth(RoomDefinition room, RectInt newRect, int addedCells)
     {
@@ -396,7 +422,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         {
             for (int y = newRect.yMin; y < newRect.yMax; y++)
             {
-                // 既存の部屋のセルではない、かつ未割り当てのセルのみを更新します。
+                // 既存の部屋のセルではない、かつ未割り当てのセルのみを更新.本当はする必要ないけど.
                 if (_grid[x, y] == -1)
                 {
                     _grid[x, y] = room.ID;
@@ -404,7 +430,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
             }
         }
         room.CurrentSize += addedCells; // 部屋のサイズを更新
-        room.Bounds = newRect; // 部屋のバウンディングボックスを更新
+        RectInt CurrentRect = room.Bounds;
+        room.Bounds = MergeRectInt(CurrentRect,newRect); // 部屋のバウンディングボックスを更新
     }
 
     /// <summary>
@@ -581,6 +608,12 @@ public partial class FloorPlanGenerator : MonoBehaviour
             }
         }
         return adjacentRoomIds;
+    }
+    
+    //部屋の各端に位置する辺の情報woを取得する.GrowLshapeが実行される時点では、辺は必ず各方向につき一つ.
+    public (RectInt UpLine, RectInt DownLine, RectInt RightLine, RectInt LeftLine) GetFullLines(RectInt RoomBounds)
+    {
+
     }
 
 }

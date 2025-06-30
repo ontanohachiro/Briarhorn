@@ -400,4 +400,25 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         // "float"以外の型名が指定された場合、現時点ではサポートしていないためnullを返します。
         return null;
     }
+
+    public RectInt MergeRectInt(RectInt rect1, RectInt rect2)
+    {
+        // 新しいRectIntのx座標は、二つのRectIntのx座標の小さい方になります。
+        int minX = Mathf.Min(rect1.x, rect2.x);
+        // 新しいRectIntのy座標は、二つのRectIntのy座標の小さい方になります。
+        int minY = Mathf.Min(rect1.y, rect2.y);
+
+        // 新しいRectIntの右端は、二つのRectIntの右端の大きい方になります。
+        int maxX = Mathf.Max(rect1.xMax, rect2.xMax);//xmaxはx+widthを返す.
+        // 新しいRectIntの下端は、二つのRectIntの下端の大きい方になります。
+        int maxY = Mathf.Max(rect1.yMax, rect2.yMax);
+
+        // minX, minYを起点とし、width, heightを算出します。
+        // widthはmaxX - minXで計算されます。
+        int width = maxX - minX;
+        // heightはmaxY - minYで計算されます。
+        int height = maxY - minY;
+
+        return new RectInt(minX, minY, width, height);
+    }
 }
