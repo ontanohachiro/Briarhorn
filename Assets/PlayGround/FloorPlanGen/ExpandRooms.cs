@@ -295,6 +295,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         RectInt TemporaryLine;//暫定的な最大ライン.Lshape
         int h, w, hatLS, watLS, LeftLastx, RightLastx, DownLasty, UpLasty, Leftwidth, Rightwidth, Downheight, Upheight;
         bool LshapeMode, canExpandRow, canExpandCol, IsLeftLineExsits, IsRightLineExsits, IsDownLineExsits, IsUpLineExsits;
+        float randomNum
 
         // 上
         if (IsExpanded[room.ID - 1, (int)ExpansionType.Up] == false)
@@ -368,7 +369,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             }
                             else//Leftwidth == Rightwidth
                             {
-                                float randomNum = Random.Range(0f, 1f);
+                                randomNum = Random.Range(0f, 1f);
                                 {
                                     if ( randomNum < 0.5f)//左
                                     {
@@ -407,67 +408,320 @@ public partial class FloorPlanGenerator : MonoBehaviour
         if (IsExpanded[room.ID - 1, (int)ExpansionType.Down] == false)
         {
             fullLineRect = null; partialLineRect = null; LshapeMode = false; h = 1; hatLS = 0;
-            for (int h = 1; ; h++) // 新しい高さ
+            TemporaryLine = EdgeLines.DownLine;
+            while (true)
             {
-                if (currentBounds.yMin - h < 0) break; // グリッドのY方向の境界チェック
+                if (currentBounds.yMin - h < 0) break;
 
-                bool canExpandRow = true;
-                for (int x = currentBounds.xMin; x < currentBounds.xMax; x++)
+                canExpandRow = true;
+                if (LshapeMode == false)
                 {
-                    if (_grid[x, currentBounds.yMin - h] != -1) // 未割り当ての配置可能セルであること
+                    for (int x = TemporaryLine.xMin; x < TemporaryLine.xMax; x++)
                     {
-                        canExpandRow = false;
-                        break;
+                        if (_grid[x, TemporaryLine.yMin - h] != -1)
+                        {
+                            canExpandRow = false;
+                            break;
+                        }
+                    }
+                    if (!canExpandRow)
+                    {
+                        LshapeMode = true;
+                        hatLS = h;
+                        continue;
+                    }
+                    else
+                    {
+                        fullLineRect = new RectInt(TemporaryLine.x, TemporaryLine.yMin - h, TemporaryLine.width, h);
                     }
                 }
-                if (!canExpandRow) break;
+                else//L字拡張
+                {
+                    if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;
 
-                possibleExpansions.Add((new RectInt(currentBounds.x, currentBounds.y - h, currentBounds.width, h), currentBounds.width * h, ExpansionType.Down));
+                    if (h == hatLS)
+                    {
+                        //左端と右端にそれぞれ拡張可能(2*2以上)のエリアがあるかを特定
+                        for (LeftLastx = TemporaryLine.x; LeftLastx < TemporaryLine.xMax; LeftLastx++)
+                        {
+                            IsLeftLineExsits = true;
+                            for (int y = TemporaryLine.yMin - 1; y >= TemporaryLine.yMin - 2; y--)
+                            {
+                                if (y < 0 || _grid[LeftLastx, y] != -1) IsLeftLineExsits = false;
+                            }
+                            if (!IsLeftLineExsits) break;
+                        }
+                        for (RightLastx = TemporaryLine.xMax - 1; RightLastx >= TemporaryLine.x; RightLastx--)
+                        {
+                            IsRightLineExsits = true;
+                            for (int y = TemporaryLine.yMin - 1; y >= TemporaryLine.yMin - 2; y--)
+                            {
+                                if (y < 0 || _grid[RightLastx, y] != -1) IsRightLineExsits = false;
+                            }
+                            if (!IsRightLineExsits) break;
+                        }
+                        Leftwidth = LeftLastx - TemporaryLine.x;
+                        Rightwidth = (TemporaryLine.xMax - 1) - RightLastx;
+
+                        if (Leftwidth < 2 && Rightwidth < 2) break;
+                        else
+                        {
+                            if (Leftwidth > Rightwidth)
+                            {
+                                TemporaryLine = new RectInt(TemporaryLine.x, TemporaryLine.y, Leftwidth, 1);
+                            }
+                            else if (Leftwidth < Rightwidth)
+                            {
+                                TemporaryLine = new RectInt(RightLastx + 1, TemporaryLine.y, Rightwidth, 1);
+                            }
+                            else//Leftwidth == Rightwidth
+                            {
+                                randomNum = Random.Range(0f, 1f);
+                                {
+                                    if (randomNum < 0.5f)//左
+                                    {
+                                        TemporaryLine = new RectInt(TemporaryLine.x, TemporaryLine.y, Leftwidth, 1);
+                                    }
+                                    else//右
+                                    {
+                                        TemporaryLine = new RectInt(RightLastx + 1, TemporaryLine.y, Rightwidth, 1);
+                                    }
+                                }
+                            }
+                        }
+                        h++;
+                        continue;
+                    }
+                    else
+                    {
+                        for (int x = TemporaryLine.xMin; x < TemporaryLine.xMax; x++)
+                        {
+                            if (_grid[x, TemporaryLine.yMin - h] != -1)
+                            {
+                                canExpandRow = false;
+                                break;
+                            }
+                        }
+                        if (!canExpandRow) break;
+                        else partialLineRect = new RectInt(TemporaryLine.x, TemporaryLine.yMin - (h - hatLS + 1), TemporaryLine.width, (h - hatLS + 1));
+                    }
+                }
+                possibleExpansions.Add((fullLineRect, partialLineRect, CalculateRectArea(fullLineRect), CalculateRectArea(partialLineRect), ExpansionType.Down, LshapeMode));
+                h++;
             }
         }
 
-        // 右方向への拡張
+        // 右
         if (IsExpanded[room.ID - 1, (int)ExpansionType.Right] == false)
         {
             fullLineRect = null; partialLineRect = null; LshapeMode = false; w = 1; watLS = 0;
-            for (int w = 1; ; w++) // 新しい幅
+            TemporaryLine = EdgeLines.RightLine;
+            while (true)
             {
-                if (currentBounds.xMax + w > _gridSize.x) break; // グリッドのX方向の境界チェック
+                if (currentBounds.xMax + w > _gridSize.x) break;
 
-                bool canExpandCol = true;
-                for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
+                canExpandCol = true;
+                if (LshapeMode == false)
                 {
-                    if (_grid[currentBounds.xMax + w - 1, y] != -1) // 未割り当ての配置可能セルであること
+                    for (int y = TemporaryLine.yMin; y < TemporaryLine.yMax; y++)
                     {
-                        canExpandCol = false;
-                        break;
+                        if (_grid[TemporaryLine.xMax + w - 1, y] != -1)
+                        {
+                            canExpandCol = false;
+                            break;
+                        }
+                    }
+                    if (!canExpandCol)
+                    {
+                        LshapeMode = true;
+                        watLS = w;
+                        continue;
+                    }
+                    else
+                    {
+                        fullLineRect = new RectInt(TemporaryLine.xMax, TemporaryLine.y, w, TemporaryLine.height);
                     }
                 }
-                if (!canExpandCol) break;
+                else//L字拡張
+                {
+                    if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;
 
-                possibleExpansions.Add((new RectInt(currentBounds.xMax, currentBounds.y, w, currentBounds.height), currentBounds.height * w, ExpansionType.Right));
+                    if (w == watLS)
+                    {
+                        //上端と下端にそれぞれ拡張可能(2*2以上)のエリアがあるかを特定
+                        for (DownLasty = TemporaryLine.y; DownLasty < TemporaryLine.yMax; DownLasty++)
+                        {
+                            IsDownLineExsits = true;
+                            for (int x = TemporaryLine.xMax; x < TemporaryLine.xMax + 2; x++)
+                            {
+                                if (x >= _gridSize.x || _grid[x, DownLasty] != -1) IsDownLineExsits = false;
+                            }
+                            if (!IsDownLineExsits) break;
+                        }
+                        for (UpLasty = TemporaryLine.yMax - 1; UpLasty >= TemporaryLine.y; UpLasty--)
+                        {
+                            IsUpLineExsits = true;
+                            for (int x = TemporaryLine.xMax; x < TemporaryLine.xMax + 2; x++)
+                            {
+                                if (x >= _gridSize.x || _grid[x, UpLasty] != -1) IsUpLineExsits = false;
+                            }
+                            if (!IsUpLineExsits) break;
+                        }
+                        Downheight = DownLasty - TemporaryLine.y;
+                        Upheight = (TemporaryLine.yMax - 1) - UpLasty;
+
+                        if (Downheight < 2 && Upheight < 2) break;
+                        else
+                        {
+                            if (Downheight > Upheight)
+                            {
+                                TemporaryLine = new RectInt(TemporaryLine.x, TemporaryLine.y, 1, Downheight);
+                            }
+                            else if (Downheight < Upheight)
+                            {
+                                TemporaryLine = new RectInt(TemporaryLine.x, UpLasty + 1, 1, Upheight);
+                            }
+                            else//Downheight == Upheight
+                            {
+                                randomNum = Random.Range(0f, 1f);
+                                {
+                                    if (randomNum < 0.5f)//下
+                                    {
+                                        TemporaryLine = new RectInt(TemporaryLine.x, TemporaryLine.y, 1, Downheight);
+                                    }
+                                    else//上
+                                    {
+                                        TemporaryLine = new RectInt(TemporaryLine.x, UpLasty + 1, 1, Upheight);
+                                    }
+                                }
+                            }
+                        }
+                        w++;
+                        continue;
+                    }
+                    else
+                    {
+                        for (int y = TemporaryLine.yMin; y < TemporaryLine.yMax; y++)
+                        {
+                            if (_grid[TemporaryLine.xMax + w - 1, y] != -1)
+                            {
+                                canExpandCol = false;
+                                break;
+                            }
+                        }
+                        if (!canExpandCol) break;
+                        else partialLineRect = new RectInt(TemporaryLine.xMax, TemporaryLine.y, w - watLS + 1, TemporaryLine.height);
+                    }
+                }
+                possibleExpansions.Add((fullLineRect, partialLineRect, CalculateRectArea(fullLineRect), CalculateRectArea(partialLineRect), ExpansionType.Right, LshapeMode));
+                w++;
             }
         }
-        // 左方向への拡張
+
+        // 左
         if (IsExpanded[room.ID - 1, (int)ExpansionType.Left] == false)
         {
             fullLineRect = null; partialLineRect = null; LshapeMode = false; w = 1; watLS = 0;
-            for (int w = 1; ; w++) // 新しい幅
+            TemporaryLine = EdgeLines.LeftLine;
+            while (true)
             {
-                if (currentBounds.xMin - w < 0) break; // グリッドのX方向の境界チェック
+                if (currentBounds.xMin - w < 0) break;
 
-                bool canExpandCol = true;
-                for (int y = currentBounds.yMin; y < currentBounds.yMax; y++)
+                canExpandCol = true;
+                if (LshapeMode == false)
                 {
-                    if (_grid[currentBounds.xMin - w, y] != -1) // 未割り当ての配置可能セルであること
+                    for (int y = TemporaryLine.yMin; y < TemporaryLine.yMax; y++)
                     {
-                        canExpandCol = false;
-                        break;
+                        if (_grid[TemporaryLine.xMin - w, y] != -1)
+                        {
+                            canExpandCol = false;
+                            break;
+                        }
+                    }
+                    if (!canExpandCol)
+                    {
+                        LshapeMode = true;
+                        watLS = w;
+                        continue;
+                    }
+                    else
+                    {
+                        fullLineRect = new RectInt(TemporaryLine.xMin - w, TemporaryLine.y, w, TemporaryLine.height);
                     }
                 }
-                if (!canExpandCol) break;
+                else//L字拡張
+                {
+                    if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;
 
-                possibleExpansions.Add((new RectInt(currentBounds.x - w, currentBounds.y, w, currentBounds.height), currentBounds.height * w, ExpansionType.Left));
+                    if (w == watLS)
+                    {
+                        //上端と下端にそれぞれ拡張可能(2*2以上)のエリアがあるかを特定
+                        for (DownLasty = TemporaryLine.y; DownLasty < TemporaryLine.yMax; DownLasty++)
+                        {
+                            IsDownLineExsits = true;
+                            for (int x = TemporaryLine.xMin - 1; x >= TemporaryLine.xMin - 2; x--)
+                            {
+                                if (x < 0 || _grid[x, DownLasty] != -1) IsDownLineExsits = false;
+                            }
+                            if (!IsDownLineExsits) break;
+                        }
+                        for (UpLasty = TemporaryLine.yMax - 1; UpLasty >= TemporaryLine.y; UpLasty--)
+                        {
+                            IsUpLineExsits = true;
+                            for (int x = TemporaryLine.xMin - 1; x >= TemporaryLine.xMin - 2; x--)
+                            {
+                                if (x < 0 || _grid[x, UpLasty] != -1) IsUpLineExsits = false;
+                            }
+                            if (!IsUpLineExsits) break;
+                        }
+                        Downheight = DownLasty - TemporaryLine.y;
+                        Upheight = (TemporaryLine.yMax - 1) - UpLasty;
+
+                        if (Downheight < 2 && Upheight < 2) break;
+                        else
+                        {
+                            if (Downheight > Upheight)
+                            {
+                                TemporaryLine = new RectInt(TemporaryLine.x, TemporaryLine.y, 1, Downheight);
+                            }
+                            else if (Downheight < Upheight)
+                            {
+                                TemporaryLine = new RectInt(TemporaryLine.x, UpLasty + 1, 1, Upheight);
+                            }
+                            else//Downheight == Upheight
+                            {
+                                randomNum = Random.Range(0f, 1f);
+                                {
+                                    if (randomNum < 0.5f)//下
+                                    {
+                                        TemporaryLine = new RectInt(TemporaryLine.x, TemporaryLine.y, 1, Downheight);
+                                    }
+                                    else//上
+                                    {
+                                        TemporaryLine = new RectInt(TemporaryLine.x, UpLasty + 1, 1, Upheight);
+                                    }
+                                }
+                            }
+                        }
+                        w++;
+                        continue;
+                    }
+                    else
+                    {
+                        for (int y = TemporaryLine.yMin; y < TemporaryLine.yMax; y++)
+                        {
+                            if (_grid[TemporaryLine.xMin - w, y] != -1)
+                            {
+                                canExpandCol = false;
+                                break;
+                            }
+                        }
+                        if (!canExpandCol) break;
+                        else partialLineRect = new RectInt(TemporaryLine.xMin - (w - watLS + 1), TemporaryLine.y, w - watLS + 1, TemporaryLine.height);
+                    }
+                }
+                possibleExpansions.Add((fullLineRect, partialLineRect, CalculateRectArea(fullLineRect), CalculateRectArea(partialLineRect), ExpansionType.Left, LshapeMode));
+                w++;
             }
         }
 
