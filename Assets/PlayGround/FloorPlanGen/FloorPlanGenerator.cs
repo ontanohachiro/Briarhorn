@@ -4,6 +4,7 @@ using System.Linq;
 using QuikGraph;
 using System;
 using static UnityEngine.Rendering.DebugUI;
+using UnityEditor.XR;
 
 // 部屋の種類 (パブリック、プライベート、廊下など)
 public enum RoomType
@@ -420,5 +421,13 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         int height = maxY - minY;
 
         return new RectInt(minX, minY, width, height);
+    }
+    /// <summary>
+    /// _grid[x, y] が targetNumであればtrueを返し、それ以外ではfalseを返す
+    /// </summary>
+    private bool CheckGrid(int x,int y,int targetNum)
+    {
+        if (x < 0 || x >= _gridSize.x || y < 0 || y >= _gridSize.y) return false;
+        else return (_grid[x, y] == targetNum);
     }
 }

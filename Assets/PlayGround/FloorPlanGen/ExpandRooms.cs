@@ -124,11 +124,17 @@ public partial class FloorPlanGenerator : MonoBehaviour
             }
         }
 
-
+        if (MVinstance.todebug == ToDebug.GrowLShape)
+        {
+            matrixToDebug = ConvertMatrix(_grid, "float");
+        }
         // フェーズ3: ギャップ埋め
         Debug.Log("Phase 3: Filling Gaps");
         FillGaps();
-
+        if (MVinstance.todebug == ToDebug.FillGaps)
+        {
+            matrixToDebug = ConvertMatrix(_grid, "float");
+        }
         Debug.Log("Room expansion completed.");
         return true;
     }
@@ -289,23 +295,21 @@ public partial class FloorPlanGenerator : MonoBehaviour
 
 
         // 拡張情報.GrowRectのとは違う.
-        List<(RectInt? fullLineRect, RectInt? partialLineRect, int addedfullCells, int addedpartialCells, ExpansionType type, bool isLshaped)> possibleExpansions = new List<(RectInt?, RectInt?, int, ExpansionType, bool)>();
+        List<(RectInt? fullLineRect, RectInt? partialLineRect, int addedfullCells, int addedpartialCells, ExpansionType type, bool isLshaped)> possibleExpansions = new List<(RectInt?, RectInt?, int,int, ExpansionType, bool)>();
         (RectInt UpLine, RectInt DownLine, RectInt RightLine, RectInt LeftLine) EdgeLines = GetFullLines(room);
         RectInt? fullLineRect, partialLineRect;
         RectInt TemporaryLine;//暫定的な最大ライン.Lshape
         int h, w, hatLS, watLS, LeftLastx, RightLastx, DownLasty, UpLasty, Leftwidth, Rightwidth, Downheight, Upheight;
         bool LshapeMode, canExpandRow, canExpandCol, IsLeftLineExsits, IsRightLineExsits, IsDownLineExsits, IsUpLineExsits;
-        float randomNum
+        float randomNum;
 
         // 上
         if (IsExpanded[room.ID - 1, (int)ExpansionType.Up] == false)
         {
             fullLineRect = null; partialLineRect = null; LshapeMode = false; h = 1; hatLS = 0;
             TemporaryLine = EdgeLines.UpLine;
-            while (true)
+            while (currentBounds.yMax + h <= _gridSize.y)
             {
-                if (currentBounds.yMax + h > _gridSize.y) break;
-
                 canExpandRow = true;
                 if (LshapeMode == false)
                 {
@@ -330,7 +334,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 }
                 else//L字拡張
                 {
-                    if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;//既にL字拡張されていたら終了.
+                  if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;//既にL字拡張されていたら終了.
 
                     if (h == hatLS)//最初.奥行きと幅が最低でも2である必要がある.グリッドを精査して部分的かつL字的な最大ラインの特定.TemporaryLineの更新.
                     {
@@ -340,7 +344,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsLeftLineExsits = true;
                             for (int y = TemporaryLine.yMax; y < TemporaryLine.yMax + 2; y++)
                             {
-                                if (_grid[LeftLastx, y] != -1) IsLeftLineExsits = false;
+                                if (CheckGrid(LeftLastx,y,-1) == false) IsLeftLineExsits = false;
                             }
                             if (!IsLeftLineExsits) break; //奥行きに2マスが存在しなかったら、そこで終了.
                         }
@@ -349,7 +353,12 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsRightLineExsits = true;
                             for (int y = TemporaryLine.yMax; y < TemporaryLine.yMax + 2; y++)
                             {
-                                if (_grid[RightLastx, y] != -1) IsRightLineExsits = false;
+                                if (y > _gridSize.y)
+                                {
+                                    IsLeftLineExsits = false;
+                                    break;
+                                }
+                                if (CheckGrid(RightLastx, y, -1) == false) IsRightLineExsits = false;
                             }
                             if (!IsRightLineExsits) break; //奥行きに2マスが存在しなかったら、そこで終了.
                         }
@@ -409,10 +418,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
         {
             fullLineRect = null; partialLineRect = null; LshapeMode = false; h = 1; hatLS = 0;
             TemporaryLine = EdgeLines.DownLine;
-            while (true)
+            while (currentBounds.yMin - h >= 0)
             {
-                if (currentBounds.yMin - h < 0) break;
-
                 canExpandRow = true;
                 if (LshapeMode == false)
                 {
@@ -437,7 +444,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 }
                 else//L字拡張
                 {
-                    if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;
+                   if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;
 
                     if (h == hatLS)
                     {
@@ -447,7 +454,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsLeftLineExsits = true;
                             for (int y = TemporaryLine.yMin - 1; y >= TemporaryLine.yMin - 2; y--)
                             {
-                                if (y < 0 || _grid[LeftLastx, y] != -1) IsLeftLineExsits = false;
+                                if (CheckGrid(LeftLastx, y, -1) == false) IsLeftLineExsits = false;
                             }
                             if (!IsLeftLineExsits) break;
                         }
@@ -456,7 +463,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsRightLineExsits = true;
                             for (int y = TemporaryLine.yMin - 1; y >= TemporaryLine.yMin - 2; y--)
                             {
-                                if (y < 0 || _grid[RightLastx, y] != -1) IsRightLineExsits = false;
+                                if (CheckGrid(RightLastx, y, -1) == false) IsRightLineExsits = false;
                             }
                             if (!IsRightLineExsits) break;
                         }
@@ -503,7 +510,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             }
                         }
                         if (!canExpandRow) break;
-                        else partialLineRect = new RectInt(TemporaryLine.x, TemporaryLine.yMin - (h - hatLS + 1), TemporaryLine.width, (h - hatLS + 1));
+                        else partialLineRect = new RectInt(TemporaryLine.x, TemporaryLine.yMin - h, TemporaryLine.width, (h - hatLS + 1));
                     }
                 }
                 possibleExpansions.Add((fullLineRect, partialLineRect, CalculateRectArea(fullLineRect), CalculateRectArea(partialLineRect), ExpansionType.Down, LshapeMode));
@@ -516,10 +523,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
         {
             fullLineRect = null; partialLineRect = null; LshapeMode = false; w = 1; watLS = 0;
             TemporaryLine = EdgeLines.RightLine;
-            while (true)
+            while (currentBounds.xMax + w <= _gridSize.x)
             {
-                if (currentBounds.xMax + w > _gridSize.x) break;
-
                 canExpandCol = true;
                 if (LshapeMode == false)
                 {
@@ -554,7 +559,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsDownLineExsits = true;
                             for (int x = TemporaryLine.xMax; x < TemporaryLine.xMax + 2; x++)
                             {
-                                if (x >= _gridSize.x || _grid[x, DownLasty] != -1) IsDownLineExsits = false;
+                                if (CheckGrid(x, DownLasty, -1) == false) IsDownLineExsits = false;
                             }
                             if (!IsDownLineExsits) break;
                         }
@@ -563,7 +568,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsUpLineExsits = true;
                             for (int x = TemporaryLine.xMax; x < TemporaryLine.xMax + 2; x++)
                             {
-                                if (x >= _gridSize.x || _grid[x, UpLasty] != -1) IsUpLineExsits = false;
+                                if (CheckGrid(x, UpLasty, -1) == false) IsUpLineExsits = false;
                             }
                             if (!IsUpLineExsits) break;
                         }
@@ -623,10 +628,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
         {
             fullLineRect = null; partialLineRect = null; LshapeMode = false; w = 1; watLS = 0;
             TemporaryLine = EdgeLines.LeftLine;
-            while (true)
+            while (currentBounds.xMin - w >= 0)
             {
-                if (currentBounds.xMin - w < 0) break;
-
                 canExpandCol = true;
                 if (LshapeMode == false)
                 {
@@ -651,7 +654,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                 }
                 else//L字拡張
                 {
-                    if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;
+                  if (IsExpanded[room.ID - 1, (int)ExpansionType.Lshape]) break;
 
                     if (w == watLS)
                     {
@@ -661,7 +664,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsDownLineExsits = true;
                             for (int x = TemporaryLine.xMin - 1; x >= TemporaryLine.xMin - 2; x--)
                             {
-                                if (x < 0 || _grid[x, DownLasty] != -1) IsDownLineExsits = false;
+                                if (CheckGrid(x, DownLasty, -1) == false) IsDownLineExsits = false;
                             }
                             if (!IsDownLineExsits) break;
                         }
@@ -670,7 +673,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             IsUpLineExsits = true;
                             for (int x = TemporaryLine.xMin - 1; x >= TemporaryLine.xMin - 2; x--)
                             {
-                                if (x < 0 || _grid[x, UpLasty] != -1) IsUpLineExsits = false;
+                                if (CheckGrid(x, UpLasty, -1) == false) IsUpLineExsits = false;
                             }
                             if (!IsUpLineExsits) break;
                         }
@@ -717,7 +720,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
                             }
                         }
                         if (!canExpandCol) break;
-                        else partialLineRect = new RectInt(TemporaryLine.xMin - (w - watLS + 1), TemporaryLine.y, w - watLS + 1, TemporaryLine.height);
+                        else partialLineRect = new RectInt(TemporaryLine.xMin - w, TemporaryLine.y, w - watLS + 1, TemporaryLine.height);
                     }
                 }
                 possibleExpansions.Add((fullLineRect, partialLineRect, CalculateRectArea(fullLineRect), CalculateRectArea(partialLineRect), ExpansionType.Left, LshapeMode));
@@ -728,13 +731,13 @@ public partial class FloorPlanGenerator : MonoBehaviour
         // 最も大きく拡張できる機会を選択します。
         // 複数ある場合はランダムに選択することで多様性を確保します。
         var bestExpansions = possibleExpansions
-            .Where(e => e.addedCells > 0) // 追加セルが0より大きいもののみ
-            .OrderByDescending(e => e.addedCells) // 追加セル数でソート
+            .Where(e => e.addedfullCells + e.addedpartialCells > 0) // 追加セルが0より大きいもののみ
+            .OrderByDescending(e => (e.addedfullCells + e.addedpartialCells)) // 追加セル数でソート
             .ThenBy(e => _random.Next()) // 同じ追加セル数の場合はランダム
             .ToList();
 
         var totalSizeRatio = _roomDefinitions.Sum(r => r.SizeRatio);
-        var maxSizeForRoom = _totalPlaceableCells * (room.SizeRatio / totalSizeRatio) * MaxSizeGrowRect; // // この部屋の最大許容サイズを事前に計算.
+        var maxSizeForRoom = _totalPlaceableCells * (room.SizeRatio / totalSizeRatio); // // この部屋の最大許容サイズを事前に計算.
 
         // bestExpansionsリストは追加セル数の多い順にソートされています。
         // このリストを先頭から順に探索し、条件を満たす最初の拡張案を採用します。
@@ -743,13 +746,19 @@ public partial class FloorPlanGenerator : MonoBehaviour
         {
             // この拡張を適用した後の部屋のサイズが、事前に計算した最大許容サイズを超えないかを確認する
             // 条件: (現在の部屋のサイズ + 拡張による追加セル数) <= 最大許容サイズ
-            if (room.CurrentSize + expansion.addedCells <= maxSizeForRoom)
+            if (room.CurrentSize + expansion.addedfullCells + expansion.addedpartialCells <= maxSizeForRoom)
             {
                 // 条件を満たす最初の拡張（= リストの並び順により最も効率的な拡張）が見つかったので、これを適用します。
                 var selectedExpansion = expansion; // 適用する拡張をこの変数に格納します。
-                ApplyGrowth(room, selectedExpansion.newRect, selectedExpansion.addedCells); // 部屋を実際に拡張する関数を呼び出します。
+                ApplyGrowth(room, selectedExpansion.fullLineRect, selectedExpansion.addedfullCells); // 部屋を実際に拡張する関数を呼び出します。
+                ApplyGrowth(room, selectedExpansion.partialLineRect, selectedExpansion.addedpartialCells);
                 IsExpanded[room.ID - 1, (int)selectedExpansion.type] = true;
-                Debug.Log($"Room {room.ID} expanded rectangularly to {selectedExpansion.newRect} adding {selectedExpansion.addedCells} cells. Current size: {room.CurrentSize},ExpansionType: {selectedExpansion.type}"); // 拡張結果をログに出力します。
+                if (selectedExpansion.isLshaped)
+                {
+                    IsExpanded[room.ID - 1, (int)ExpansionType.Lshape] = true;
+                }
+                
+                Debug.Log($"Room {room.ID} expanded in GrowLshape  ,ExpansionType: {selectedExpansion.type},isLshaped: {selectedExpansion.isLshaped}"); 
                 return true;
             }
         }
@@ -763,12 +772,16 @@ public partial class FloorPlanGenerator : MonoBehaviour
     /// <param name="room">拡張する部屋の定義。</param>
     /// <param name="newRect">追加された新しい矩形領域。</param>
     /// <param name="addedCells">追加されるセルの数。</param>
-    private void ApplyGrowth(RoomDefinition room, RectInt newRect, int addedCells)
+    private void ApplyGrowth(RoomDefinition room, RectInt? newRect, int addedCells)
     {
-        // 新しい領域のセルを部屋のIDで埋めます。
-        for (int x = newRect.xMin; x < newRect.xMax; x++)
+        if (newRect == null)
         {
-            for (int y = newRect.yMin; y < newRect.yMax; y++)
+            return;//何もしない.
+        }
+        // 新しい領域のセルを部屋のIDで埋めます。
+        for (int x = newRect.Value.xMin; x < newRect.Value.xMax; x++)
+        {
+            for (int y = newRect.Value.yMin; y < newRect.Value.yMax; y++)
             {
                 // 既存の部屋のセルではない、かつ未割り当てのセルのみを更新.本当はする必要ないけど.
                 if (_grid[x, y] == -1)
@@ -779,7 +792,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         }
         room.CurrentSize += addedCells; // 部屋のサイズを更新
         RectInt CurrentRect = room.Bounds;
-        room.Bounds = MergeRectInt(CurrentRect, newRect); // 部屋のバウンディングボックスを更新
+        room.Bounds = MergeRectInt(CurrentRect, newRect.Value); // 部屋のバウンディングボックスを更新
     }
 
     /// <summary>
@@ -789,62 +802,94 @@ public partial class FloorPlanGenerator : MonoBehaviour
     private void FillGaps()
     {
         Debug.Log("Filling remaining gaps in the grid.");
+        while (true)
+        {
+            // このイテレーションで変更があったかを追跡するフラグ
+            bool changedInIteration = false;
+            // このイテレーションで行う更新を一時的に保存するリスト
+            var updates = new List<(Vector2Int position, int roomId)>();
+
+            // --- 計算フェーズ ---
+            // グリッド全体を走査し、どのセルをどの部屋IDに更新すべきかを決定する
+            for (int x = 0; x < _gridSize.x; x++)
+            {
+                for (int y = 0; y < _gridSize.y; y++)
+                {
+                    // 未割り当てのセル(-1)のみを対象とする
+                    if (_grid[x, y] == -1)
+                    {
+                        // 隣接する部屋IDとその出現回数をカウントするための辞書
+                        var neighborCounts = new Dictionary<int, int>();
+
+                        // 8方向の隣接セルをチェックします。
+                        foreach (var offset in new[] {
+                        Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left,
+                        new Vector2Int(1, 1), new Vector2Int(1, -1), new Vector2Int(-1, 1), new Vector2Int(-1, -1)
+                    })
+                        {
+                            Vector2Int neighborPos = new Vector2Int(x, y) + offset;
+
+                            // グリッドの範囲内かチェック
+                            if (neighborPos.x >= 0 && neighborPos.x < _gridSize.x &&
+                                neighborPos.y >= 0 && neighborPos.y < _gridSize.y)
+                            {
+                                int neighborRoomId = _grid[neighborPos.x, neighborPos.y];
+                                // 有効な部屋ID(>0)の場合、隣接カウントを増やす
+                                if (neighborRoomId > 0)
+                                {
+                                    if (neighborCounts.ContainsKey(neighborRoomId))
+                                    {
+                                        neighborCounts[neighborRoomId]++;
+                                    }
+                                    else
+                                    {
+                                        neighborCounts[neighborRoomId] = 1;
+                                    }
+                                }
+                            }
+                        }
+
+                        // 隣接する部屋が1つ以上見つかった場合
+                        if (neighborCounts.Count > 0)
+                        {
+                            // 最も多く隣接している部屋IDを見つける
+                            int bestRoomId = neighborCounts.OrderByDescending(kv => kv.Value).First().Key;
+                            // 更新リストに、このセルの更新情報を追加
+                            updates.Add((new Vector2Int(x, y), bestRoomId));
+                            changedInIteration = true;
+                        }
+                    }
+                }
+            }
+
+            // このイテレーションでグリッドに全く変更がなかった場合、処理は完了なのでループを抜ける
+            if (!changedInIteration)
+            {
+                break;
+            }
+
+            // --- 更新フェーズ ---
+            // 計算フェーズで決定した全ての更新をグリッドに一括で適用する
+            foreach (var update in updates)
+            {
+                ApplyGrowth(_roomDefinitions[update.roomId - 1], new RectInt(update.position.x, update.position.y, 1, 1), 1);
+            }
+        }
+
+        // ループ終了後、それでも残っている未割り当てセルを処理する
         for (int x = 0; x < _gridSize.x; x++)
         {
             for (int y = 0; y < _gridSize.y; y++)
             {
-                if (_grid[x, y] == -1) // 未割り当てのセルである場合
+                if (_grid[x, y] == -1)
                 {
-                    // 隣接する部屋を見つけ、最も多くの隣接セルを持つ部屋に割り当てます。
-                    int bestRoomId = -1;
-                    int maxAdjacentCount = 0;
-
-                    // 8方向の隣接セルをチェックします。
-                    foreach (var offset in new[] {
-                        Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left,
-                        new Vector2Int(1, 1), new Vector2Int(1, -1), new Vector2Int(-1, 1), new Vector2Int(-1, -1)
-                    })
-                    {
-                        Vector2Int neighborPos = new Vector2Int(x, y) + offset;
-
-                        if (neighborPos.x >= 0 && neighborPos.x < _gridSize.x &&
-                            neighborPos.y >= 0 && neighborPos.y < _gridSize.y)
-                        {
-                            int neighborRoomId = _grid[neighborPos.x, neighborPos.y];
-                            if (neighborRoomId > 0) // 有効な部屋IDの場合
-                            {
-                                // この部屋IDの隣接数をカウントします。
-                                // この簡略化された実装では、単に最初に遭遇した部屋に割り当てますが、
-                                // より堅牢な実装では、各隣接部屋の隣接セルの合計を計算し、最大のものを選びます。
-                                // ここでは、最も近くにある有効な部屋IDに割り当てます。
-                                if (maxAdjacentCount == 0) // 最初の有効な隣接部屋
-                                {
-                                    bestRoomId = neighborRoomId;
-                                    maxAdjacentCount = 1; // 少なくとも1つの隣接セルが見つかった
-                                }
-                                // ここで、さらに隣接セルが多い部屋を優先するロジックを追加できます。
-                                // 例: float currentRoomAdjacentCount = GetAdjacentCellsCount(neighborRoomId, new Vector2Int(x, y));
-                                // if (currentRoomAdjacentCount > maxAdjacentCount) { ... }
-                            }
-                        }
-                    }
-
-                    if (bestRoomId > 0)
-                    {
-                        _grid[x, y] = bestRoomId;
-                        _roomDefinitions[bestRoomId].CurrentSize++; // 部屋のサイズを更新
-                        // _roomDefinitions[bestRoomId].Bounds を更新することも検討してください。
-                        // ただし、FillGapsの後で一括してCalculateRoomBoundsを呼ぶ方が効率的かもしれません。
-                    }
-                    else
-                    {
-                        // どの部屋にも隣接しない孤立した未割り当てセル
-                        Debug.LogWarning($"Isolated unassigned cell at ({x},{y}). Setting to 0 (unusable).");
-                        _grid[x, y] = 0; // どの部屋にも割り当てられない場合は、使用不可としてマークします。
-                    }
+                    // どの部屋にも隣接しない孤立した未割り当てセル
+                    Debug.LogWarning($"Isolated unassigned cell at ({x},{y}). Setting to 0 (unusable).");
+                    _grid[x, y] = 0; // どの部屋にも割り当てられない場合は、使用不可としてマークします。
                 }
             }
         }
+
         Debug.Log("Gap filling completed.");
     }
 

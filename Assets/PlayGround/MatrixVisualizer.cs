@@ -6,7 +6,7 @@ using UnityEngine;
 
 public enum ToDebug
 {
-    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition, ExpandTo22,GrowRect, GrowLShape
+    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition, ExpandTo22,GrowRect, GrowLShape, FillGaps
 }
 
 public class MatrixVisualizer : MonoBehaviour

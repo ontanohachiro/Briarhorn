@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainFontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-  todebug: 4
+  todebug: 6
   inputSettings:
     MaxGenerationAttempts: 0
     SeedPlacementWeightDistanceFactor: 0
@@ -161,8 +161,8 @@ MonoBehaviour:
     SeedExclusionRadius: 0
     SeedInclusionRadius: 0
   FPG_instance: {fileID: 366539257}
-  xsize: 15
-  ysize: 15
+  xsize: 13
+  ysize: 13
 --- !u!4 &35251555
 Transform:
   m_ObjectHideFlags: 0
