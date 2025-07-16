@@ -65,7 +65,7 @@ public class FloorPlanSettings//入力.
     public float SeedPlacementWeightDistanceFactor = 0.5f; // 外壁からの距離に基づく重み付け係数 
     public float SeedPlacementAdjacencyBonus = 1.0f; // 隣接制約のある部屋の近くの重みボーナス
     public int SeedExclusionRadius = 2; // 配置されたシードの周囲で他のシードを配置しない半径
-    public int SeedInclusionRadius = 4; //隣接制約のある部屋の近くの重みボーナスを適応する半径. SIR > SER
+    public int SeedInclusionRadius = 3; //隣接制約のある部屋の近くの重みボーナスを適応する半径. SIR > SER
 
     public  FloorPlanSettings(int[,] footprint, List<RoomDefinition> RDlist, AdjacencyGraph<int, Edge<int>> Graph, int MGA = 10, float SPWDF = 0.5f, float SPAB = 1.0f, int SER = 1, int SIR = 2)
     {
@@ -204,6 +204,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             return null;
         }
        MVinstance.Execute(matrixToDebug);
+        MVinstance.VisualizeNetwork(ConvertToUndirectedEdgeList(_ConnectivityGraph), _roomDefinitions);
         return null;//ここまでしか出来てない
         /*
         // 隣接制約の検証
@@ -429,5 +430,35 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     {
         if (x < 0 || x >= _gridSize.x || y < 0 || y >= _gridSize.y) return false;
         else return (_grid[x, y] == targetNum);
+    }
+
+    /// <summary>
+    /// 与えられた接続グラフから、方向を考慮しない辺のリストを生成する関数。
+    /// </summary>
+    /// <returns>方向を考慮しない辺のタプルのリスト。各タプルは (部屋ID1, 部屋ID2) を示す。</returns>
+    public List<Tuple<int, int>> ConvertToUndirectedEdgeList(AdjacencyGraph<int, Edge<int>> graph)
+    {
+        // 重複する辺を効率的に管理するためにHashSetを使用する。
+        // (1, 2) と (2, 1) を同じ辺として扱うために、必ず小さい方のIDがItem1に来るように正規化して格納する。
+        var undirectedEdges = new HashSet<Tuple<int, int>>();
+
+        // グラフに含まれる全ての辺をループで処理する
+        foreach (var edge in graph.Edges)
+        {
+            // 辺の始点と終点のIDを取得
+            var source = edge.Source;
+            var target = edge.Target;
+
+            // IDの順序を正規化し、常に (小さいID, 大きいID) の組を作る 三項演算子.
+            var normalizedEdge = source < target
+                ? Tuple.Create(source, target)
+                : Tuple.Create(target, source);
+
+            // 正規化した辺をHashSetに追加する。重複は自動的に無視される。
+            undirectedEdges.Add(normalizedEdge);
+        }
+
+        // HashSetをListに変換して返す
+        return undirectedEdges.ToList();
     }
 }

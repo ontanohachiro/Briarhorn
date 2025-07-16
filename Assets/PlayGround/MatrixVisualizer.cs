@@ -1,8 +1,11 @@
 using QuikGraph;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 
 public enum ToDebug
 {
@@ -14,13 +17,18 @@ public class MatrixVisualizer : MonoBehaviour
     public TMP_FontAsset mainFontAsset;
     public ToDebug todebug;
     private GameObject Parent = null;
+    private GameObject LineParent = null;
     public FloorPlanSettings inputSettings;
 
     public FloorPlanGenerator FPG_instance;
     public int xsize, ysize;
-    
-    
-    
+    [Tooltip("描画する線の太さ")]
+    [SerializeField] private float lineWidth = 0.1f;
+
+    [Tooltip("描画する線の色")]
+    [SerializeField] private Color lineColor = Color.blue;
+
+
 
     private int[,] CreateFootprint(int x, int y)
     {
@@ -90,19 +98,19 @@ public class MatrixVisualizer : MonoBehaviour
         roomDefinitions.Add(new RoomDefinition(
             id: 2,
             type: RoomType.LivingRoom,
-            ratio: 30f
+            ratio: 10f
         ));
 
         roomDefinitions.Add(new RoomDefinition(
             id: 3,
             type: RoomType.Kitchen,
-            ratio: 15f
+            ratio: 10f
         ));
 
         roomDefinitions.Add(new RoomDefinition(
             id: 4,
             type: RoomType.Bedroom,
-            ratio: 25f
+            ratio: 10f
         ));
 
         roomDefinitions.Add(new RoomDefinition(
@@ -114,7 +122,7 @@ public class MatrixVisualizer : MonoBehaviour
         roomDefinitions.Add(new RoomDefinition(
             id: 6,
             type: RoomType.Hallway,
-            ratio: 15f
+            ratio: 10f
         ));
         // 作成した部屋定義のリストを返す。
         return roomDefinitions;
@@ -212,7 +220,32 @@ public class MatrixVisualizer : MonoBehaviour
         // テキストのスケールを調整
         textObj.transform.localScale = Vector3.one * 0.1f;
     }
-    
+
+    private void DrawThickLine(Vector3 startPos, Vector3 endPos, Transform parent)
+    {
+        // 線を描画するための新しいゲームオブジェクトを作成
+        GameObject lineObject = new GameObject("ConnectionLine");
+        // 親オブジェクトを設定して、ヒエラルキーを整理
+        lineObject.transform.SetParent(parent);
+
+        // Line Rendererコンポーネントを追加
+        LineRenderer lineRenderer = lineObject.AddComponent<LineRenderer>();
+
+        // --- Line Renderer の設定 ---
+        lineRenderer.positionCount = 2; // 頂点の数を設定
+        lineRenderer.SetPosition(0, startPos); // 始点を設定
+        lineRenderer.SetPosition(1, endPos); // 終点を設定
+
+        // インスペクターで設定した太さと色を適用
+        lineRenderer.startWidth = lineWidth;
+        lineRenderer.endWidth = lineWidth;
+        lineRenderer.startColor = lineColor;
+        lineRenderer.endColor = lineColor;
+
+        // マテリアルを設定しないと表示されないため、シンプルなデフォルトマテリアルを割り当てる
+        // このシェーダーはUnityに標準で含まれているものです
+        lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
+    }
     void Start()
     {
         inputSettings = new FloorPlanSettings(CreateFootprint(xsize, ysize),CreateRoomDefinitionList(),CreateConnectivityGraph());
@@ -233,6 +266,39 @@ public class MatrixVisualizer : MonoBehaviour
                 PlaceCube(vecPos, Matrix[i, j]);
             }
         }
+    }
+    public void VisualizeNetwork(List<Tuple<int, int>> edges,List<RoomDefinition> roomDefinitions)
+    {
+        if (LineParent != null)
+        {
+            Destroy(LineParent);//Mesh（MeshFilter.sharedMesh）, Material（Renderer.sharedMaterial,Texture,TextMeshProのフォントアセットやマテリアルは解放されない.
+        }
+        LineParent = new GameObject();
+        Dictionary<int, Vector2Int> roomPositions = roomDefinitions
+            .Where(room => room.InitialSeedPosition.HasValue) // InitialSeedPositionがnullでない部屋のみをフィルタリング
+            .ToDictionary(
+                room => room.ID,                           // キーには大文字の「ID」プロパティを使用
+                room => room.InitialSeedPosition.Value);   // 値には.Valueで非null許容型に変換して使用
+
+
+        //  辺に従って部屋同士を線で結ぶ 
+        foreach (var edge in edges)
+        {
+            var id1 = edge.Item1;
+            var id2 = edge.Item2;
+
+            // 辞書から両方の部屋の座標を取得できるか確認する
+            // (両方の部屋の位置が確定している場合のみ線を引く)
+            if (roomPositions.ContainsKey(id1) && roomPositions.ContainsKey(id2))
+            {
+                // Vector2Int座標をVector3に変換する
+                Vector3 startPoint = new Vector3(roomPositions[id1].x, 0, roomPositions[id1].y ) + new Vector3(0.5f,0.5f,0.5f);
+                Vector3 endPoint = new Vector3(roomPositions[id2].x, 0, roomPositions[id2].y ) +new Vector3(0.5f, 0.5f, 0.5f);
+
+                DrawThickLine(startPoint, endPoint, LineParent.transform);
+            }
+        }
+
     }
     // Update is called once per frame
     void Update()

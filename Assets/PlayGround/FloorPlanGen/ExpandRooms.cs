@@ -893,116 +893,6 @@ public partial class FloorPlanGenerator : MonoBehaviour
         Debug.Log("Gap filling completed.");
     }
 
-
-    /// <summary>
-    /// 初期シード配置後に隣接制約が満たされていることを確認します。
-    /// 論文では、制約が満たされない場合に生成プロセスをリセットする可能性が言及されています。
-    /// </summary>
-    /// <returns>全ての隣接制約が満たされている場合はtrue、そうでない場合はfalse。</returns>
-    private bool VerifyAdjacencyConstraints()
-    {
-        Debug.Log("Verifying adjacency constraints...");
-        bool allConstraintsMet = true;
-
-        foreach (var edge in settings.ConnectivityGraph.Edges) // 接続グラフの各辺（隣接制約）をチェック
-        {
-            RoomDefinition roomA = _roomDefinitions[edge.Source]; // 辺の始点に対応する部屋
-            RoomDefinition roomB = _roomDefinitions[edge.Target]; // 辺の終点に対応する部屋
-
-            if (!roomA.InitialSeedPosition.HasValue || !roomB.InitialSeedPosition.HasValue)
-            {
-                // シードが配置されていない部屋については、ここではチェックできません。
-                // これはPlaceInitialSeeds()の責任です。
-                continue;
-            }
-
-            // 2つの部屋が隣接しているかを確認します。
-            // ここでは簡易的に、両部屋のバウンディングボックスが重なるか、または非常に近いかをチェックします。
-            // より厳密には、両部屋のセルが直接隣接しているかを確認する必要があります。
-            bool areAdjacent = AreRoomsDirectlyAdjacent(roomA.ID, roomB.ID);
-
-            if (!areAdjacent)
-            {
-                Debug.LogWarning($"Adjacency constraint between Room {roomA.ID} ({roomA.Type}) and Room {roomB.ID} ({roomB.Type}) NOT met after initial placement. Their cells are not adjacent.");
-                allConstraintsMet = false;
-                // ここで、満たされなかった制約に基づいて、部屋の配置を調整するなどのロジックを追加できます。
-                // または、単純にこの試行を失敗としてマークします。
-            }
-            else
-            {
-                Debug.Log($"Adjacency constraint between Room {roomA.ID} ({roomA.Type}) and Room {roomB.ID} ({roomB.Type}) MET.");
-            }
-        }
-        return allConstraintsMet;
-    }
-
-    /// <summary>
-    /// 指定された2つの部屋がグリッド上で直接隣接しているかを判断する補助関数。
-    /// </summary>
-    /// <param name="roomID1">部屋1のID。</param>
-    /// <param name="roomID2">部屋2のID。</param>
-    /// <returns>部屋が直接隣接している場合はtrue、そうでない場合はfalse。</returns>
-    private bool AreRoomsDirectlyAdjacent(int roomID1, int roomID2)
-    {
-        // 部屋1の全てのセルを走査
-        for (int x = 0; x < _gridSize.x; x++)
-        {
-            for (int y = 0; y < _gridSize.y; y++)
-            {
-                if (_grid[x, y] == roomID1)
-                {
-                    // このセルの隣接セルをチェック
-                    foreach (var offset in new[] { Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left })
-                    {
-                        Vector2Int neighborPos = new Vector2Int(x, y) + offset;
-
-                        if (neighborPos.x >= 0 && neighborPos.x < _gridSize.x &&
-                            neighborPos.y >= 0 && neighborPos.y < _gridSize.y)
-                        {
-                            if (_grid[neighborPos.x, neighborPos.y] == roomID2)
-                            {
-                                return true; // 隣接するセルが見つかった
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-
-    /// <summary>
-    /// グリッド上の指定されたセルに隣接する部屋のIDのリストを返します。
-    /// </summary>
-    /// <param name="x">セルのX座標。</param>
-    /// <param name="y">セルのY座標。</param>
-    /// <returns>隣接する部屋のIDのHashSet（重複なし）。</returns>
-    private HashSet<int> GetAdjacentRooms(int x, int y)
-    {
-        HashSet<int> adjacentRoomIds = new HashSet<int>();
-
-        // 8方向の隣接セルをチェック
-        foreach (var offset in new[] {
-            Vector2Int.up, Vector2Int.down, Vector2Int.right, Vector2Int.left,
-            new Vector2Int(1, 1), new Vector2Int(1, -1), new Vector2Int(-1, 1), new Vector2Int(-1, -1)
-        })
-        {
-            Vector2Int neighborPos = new Vector2Int(x, y) + offset;
-
-            if (neighborPos.x >= 0 && neighborPos.x < _gridSize.x &&
-                neighborPos.y >= 0 && neighborPos.y < _gridSize.y)
-            {
-                int neighborRoomId = _grid[neighborPos.x, neighborPos.y];
-                if (neighborRoomId > 0) // 有効な部屋IDの場合
-                {
-                    adjacentRoomIds.Add(neighborRoomId);
-                }
-            }
-        }
-        return adjacentRoomIds;
-    }
-
     //部屋の各端に位置する辺の情報を取得する.GrowLshapeが実行される時点では、辺は必ず各方向につき一つ.
     public (RectInt UpLine, RectInt DownLine, RectInt RightLine, RectInt LeftLine) GetFullLines(RoomDefinition room)
     {
@@ -1071,7 +961,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
 
         return (upLine, downLine, rightLine, leftLine);
     }
-
+    //rectintの面積を計算,null対応.
     public int CalculateRectArea(RectInt? rect)
     {
         if (rect.HasValue)
