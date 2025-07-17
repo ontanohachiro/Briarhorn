@@ -95,6 +95,7 @@ public class Door
     // ドアが接続する2つのセルの座標.これらのセルは、グリッドの境界を1だけ超えることがある。{
     public Vector2Int Cell1;
     public Vector2Int Cell2;
+    public Tuple<int, int> edge;
 }
 
 // --- フロアプラン生成クラス ---
