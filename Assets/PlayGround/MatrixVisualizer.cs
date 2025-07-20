@@ -21,6 +21,7 @@ public class MatrixVisualizer : MonoBehaviour
     private GameObject LineParent = null;
     private GameObject DoorParent = null;
     public FloorPlanSettings inputSettings;
+    public int GenerationTime;
 
     public FloorPlanGenerator FPG_instance;
     public int xsize, ysize;
@@ -289,6 +290,10 @@ public class MatrixVisualizer : MonoBehaviour
     {
         inputSettings = new FloorPlanSettings(CreateFootprint(xsize, ysize),CreateRoomDefinitionList(),CreateConnectivityGraph());
         FPG_instance.Setup(inputSettings);
+        for (int i = 0; i <GenerationTime; i++)
+        {
+            FPG_instance.DebugAttempt();
+        }
     }
     public void Execute(float[,] Matrix)
     {
@@ -350,10 +355,5 @@ public class MatrixVisualizer : MonoBehaviour
         {
             DrawDoor(door, DoorParent.transform);
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

@@ -1,0 +1,3544 @@
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01136946
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.009756355
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 19.13%, ActualSize: 22
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01094938
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 12.17%, ActualSize: 14
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 19.13%, ActualSize: 22
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01215921
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01328503
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.009663938
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 19.13%, ActualSize: 22
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.009823567
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01004201
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 15.65%, ActualSize: 18
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01279773
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01148708
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 15.65%, ActualSize: 18
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01230204
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01282294
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01220122
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.008437305
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Plan Score (Variance): 0.01010922
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 12.17%, ActualSize: 14
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:36
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.009008612
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 15.65%, ActualSize: 18
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01031086
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01065533
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 17.39%, ActualSize: 20
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.007983617
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 16.52%, ActualSize: 19
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.008185256
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01202479
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 18.26%, ActualSize: 21
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01219282
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 20.00%, ActualSize: 23
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01137786
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.008882589
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.009109432
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 15.65%, ActualSize: 18
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.009428692
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01031926
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.008277673
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 15.65%, ActualSize: 18
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.008647344
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.009210251
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01186516
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 20.87%, ActualSize: 24
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01092418
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 18.26%, ActualSize: 21
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 16.52%, ActualSize: 19
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.008546525
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 16.52%, ActualSize: 19
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.01126024
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.008428902
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Plan Score (Variance): 0.009529511
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:37
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.009227053
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.008882588
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 20.00%, ActualSize: 23
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.009731149
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.009109433
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01091577
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 14.78%, ActualSize: 17
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01220962
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 20.87%, ActualSize: 24
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.009378283
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01193237
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 20.87%, ActualSize: 24
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01130225
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 12.17%, ActualSize: 14
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01189036
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01215921
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.009957992
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 17.39%, ActualSize: 20
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.009882378
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.01215081
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 12.17%, ActualSize: 14
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Plan Score (Variance): 0.008655746
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 17.39%, ActualSize: 20
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:38
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.009781559
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.01240286
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.01059651
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.009277465
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.01184835
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.007647554
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.008210461
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.008706155
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.01012602
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.04%, ActualSize: 15
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.009025416
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 15.65%, ActualSize: 18
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 12.17%, ActualSize: 14
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.01005041
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 9.57%, ActualSize: 11
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 13.91%, ActualSize: 16
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.008529722
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 12.17%, ActualSize: 14
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 11.30%, ActualSize: 13
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.01300777
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 25.22%, ActualSize: 29
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 7.83%, ActualSize: 9
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.006656166
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 3.48%, ActualSize: 4
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 16.52%, ActualSize: 19
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 20.00%, ActualSize: 23
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 10.43%, ActualSize: 12
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.009831969
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 17.39%, ActualSize: 20
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Plan Score (Variance): 0.01139467
+Total Placeable Cells: 115
+Total SizeRatio Sum: 60
+  Room ID: 1, Type: Entrance, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.09%, ActualSize: 7
+  Room ID: 2, Type: LivingRoom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+  Room ID: 3, Type: Kitchen, TargetRatio: 16.67% (Raw: 10), ActualRatio: 8.70%, ActualSize: 10
+  Room ID: 4, Type: Bedroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 6.96%, ActualSize: 8
+  Room ID: 5, Type: Bathroom, TargetRatio: 16.67% (Raw: 10), ActualRatio: 4.35%, ActualSize: 5
+  Room ID: 6, Type: Hallway, TargetRatio: 16.67% (Raw: 10), ActualRatio: 5.22%, ActualSize: 6
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------
+Timestamp: 2025/07/21 5:07:39
+Generation Attempt: FAILED
+--------------------------------------------------

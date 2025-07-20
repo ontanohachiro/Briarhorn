@@ -176,10 +176,46 @@ public  partial class FloorPlanGenerator : MonoBehaviour
 
         return bestPlan;
     }
-
+    /// <summary>
+    /// デバッグ用に単一のフロアプラン生成を試行し、その結果（成功または失敗）を評価してログに出力します。
+    /// </summary>
     public void DebugAttempt()
     {
-        AttemptGeneration();
+        // フロアプランの生成を試行します。
+        GeneratedFloorPlan plan = AttemptGeneration();
+
+        // planがnullでない、つまり生成に成功した場合
+        if (plan != null)
+        {
+            // 生成されたプランを評価し、デバッグファイルに書き出します。
+            // isdebug: true を渡すことで、EvaluatePlan内でファイルへの書き込みが実行されます。
+            float score = EvaluatePlan(_totalPlaceableCells, plan, true);
+
+            // 評価スコアをコンソールにも出力します。
+            Debug.Log($"Debug Attempt Succeeded. Plan score (variance): {score}");
+        }
+        // planがnull、つまり生成に失敗した場合
+        else
+        {
+            // 失敗した情報をログファイルに書き込みます。
+            string logFilePath = "FloorPlanGenerationLog.txt";
+            string failureData = $"Timestamp: {DateTime.Now}\n" +
+                                 $"Generation Attempt: FAILED\n" +
+                                 "--------------------------------------------------\n";
+            try
+            {
+                // File.AppendAllTextを使い、既存のログファイルに追記します。
+                System.IO.File.AppendAllText(logFilePath, failureData);
+            }
+            catch (Exception e)
+            {
+                // 書き込みに失敗した場合はエラーログを出力します。
+                Debug.LogError($"Failed to write failure log to file: {e.Message}");
+            }
+
+            // 生成に失敗したことをコンソールにも出力します。
+            Debug.LogWarning("Debug Attempt Failed: AttemptGeneration returned null.");
+        }
     }
     /// <summary>
     /// 1回のフロアプラン生成試行をする.
@@ -274,35 +310,94 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     }
 
     /// <summary>
-    /// 生成されたプランの評価 (スコアリング) - ダミー実装
+    /// 生成されたプランを評価し、スコアを計算する関数。
+    /// 各部屋の実際の面積比と、正規化された目標の面積比との差の分散を計算します。スコアは低いほど良い評価となります。
     /// </summary>
-    private float EvaluatePlan(GeneratedFloorPlan plan)
+    /// <param name="totalPlaceableCells">配置可能なセルの総数</param>
+    /// <param name="plan">評価対象のGeneratedFloorPlan</param>
+    /// <param name="isdebug">trueの場合、評価結果をデバッグファイルに書き出すフラグ</param>
+    /// <returns>評価スコア（分散）。値が小さいほど、目標の面積比に近い良いプランと評価される。</returns>
+    private float EvaluatePlan(int totalPlaceableCells, GeneratedFloorPlan plan, bool isdebug)
     {
-        // TODO: 実装
-        // - 制約充足度 (隣接、到達可能性)
-        // - 面積比率の達成度
-        // - 部屋の形状 (矩形度、凹凸の少なさ)
-        // - 廊下の効率性 (面積、長さ)
-        // - ドアの数、位置
-        float score = 1.0f;
+        int roomCount = plan.Rooms.Count;
 
-        // 例: 隣接制約が満たされていない場合はスコアを下げる
-        // if (!VerifyAdjacencyConstraints(plan.Rooms.Values.ToList())) score *= 0.5f;
+        // 部屋が存在しない、または配置可能セルがない場合は評価不能とする（スコアは最大値）
+        if (roomCount == 0 || totalPlaceableCells == 0)
+        {
+            return float.MaxValue;
+        }
 
-        // 例: 到達可能性が満たされていない場合はスコアを大幅に下げる
-        // if (!VerifyReachability(plan.Rooms.Values.ToList(), plan.Doors)) score = 0f; // 到達不能は致命的
+        // --- ここからが追加部分 ---
+        // 1. 全ての部屋のSizeRatioの合計を計算し、正規化の分母として使用する
+        float totalSizeRatioSum = 0f;
+        foreach (var room in plan.Rooms)
+        {
+            totalSizeRatioSum += room.SizeRatio;
+        }
 
-        // 例: 面積比率の誤差が大きいほどスコアを下げる
-        // float totalArea = plan.Rooms.Values.Sum(r => GetRoomArea(plan.Grid, r.Key)); // GetRoomAreaは要実装
-        // float ratioError = 0f;
-        // foreach(var room in plan.Rooms) {
-        //      float targetRatio = room.Value.SizeRatio / plan.Rooms.Values.Sum(r => r.SizeRatio);
-        //      float actualRatio = GetRoomArea(plan.Grid, room.Key) / totalArea;
-        //      ratioError += Mathf.Abs(targetRatio - actualRatio);
-        // }
-        // score *= Mathf.Clamp01(1.0f - ratioError); // 誤差が大きいほど減点
+        // SizeRatioの合計が0の場合、目標比率を計算できないため評価不能とする
+        if (totalSizeRatioSum == 0f)
+        {
+            Debug.LogWarning("Sum of SizeRatio is 0. Cannot calculate target ratios for evaluation.");
+            return float.MaxValue;
+        }
+        // --- ここまでが追加部分 ---
 
-        return score;
+        // 分散計算のための、差の2乗の合計を格納する変数
+        float sumOfSquaredDifferences = 0f;
+
+        // planに含まれる各部屋についてループ処理
+        foreach (var room in plan.Rooms)
+        {
+            // 実際の面積比を計算
+            // room.CurrentSize は ExpandRooms で計算された部屋の実際のセル数
+            float actualRatio = (float)room.CurrentSize / totalPlaceableCells;
+
+            // --- ここからが修正部分 ---
+            // 正規化された目標の面積比を計算
+            // (この部屋のSizeRatio) / (全部屋のSizeRatioの合計)
+            float targetRatio = room.SizeRatio / totalSizeRatioSum;
+            // --- ここまでが修正部分 ---
+
+            // 実際の面積比と目標の面積比の差を計算
+            float difference = actualRatio - targetRatio;
+
+            // 差の2乗を合計に加算
+            sumOfSquaredDifferences += difference * difference;
+        }
+
+        // 分散を計算 (差の2乗の平均)
+        float variance = sumOfSquaredDifferences / roomCount;
+
+        // isdebugフラグがtrueの場合、デバッグ情報をファイルに書き込む
+        if (isdebug)
+        {
+            string logFilePath = "FloorPlanGenerationLog.txt";
+            string debugData = $"Timestamp: {DateTime.Now}\n" +
+                               $"Plan Score (Variance): {variance}\n" +
+                               $"Total Placeable Cells: {totalPlaceableCells}\n" +
+                               $"Total SizeRatio Sum: {totalSizeRatioSum}\n";
+
+            foreach (var room in plan.Rooms)
+            {
+                float actualRatio = (float)room.CurrentSize / totalPlaceableCells;
+                float targetRatio = room.SizeRatio / totalSizeRatioSum;
+                // P2フォーマットでパーセンテージ表示
+                debugData += $"  Room ID: {room.ID}, Type: {room.Type}, TargetRatio: {targetRatio:P2} (Raw: {room.SizeRatio}), ActualRatio: {actualRatio:P2}, ActualSize: {room.CurrentSize}\n";
+            }
+            debugData += "--------------------------------------------------\n";
+
+            try
+            {
+                System.IO.File.AppendAllText(logFilePath, debugData);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Failed to write to debug log file: {e.Message}");
+            }
+        }
+
+        return variance;
     }
 
     /// <summary>
