@@ -62,8 +62,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
     private bool ExpandRooms()
     {
         Debug.Log("Starting room expansion...");
-        List<RoomDefinition> _roomsToExpandP1 = _roomDefinitions.ToList();
-        List<RoomDefinition> _roomsToExpandP2 = _roomDefinitions.ToList();
+        List<RoomDefinition> _roomsToExpandP1 = DeepCopyHelper.DeepCopyRoomDefinitions(_roomDefinitions);
+        List<RoomDefinition> _roomsToExpandP2 = DeepCopyHelper.DeepCopyRoomDefinitions(_roomDefinitions);
         SetIsExpanded(_roomDefinitions.Count);
         // フェーズ1: 矩形拡張
         Debug.Log("Phase 1: Rectangular Expansion");

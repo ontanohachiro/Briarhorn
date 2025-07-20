@@ -39,6 +39,10 @@ public class RoomDefinition
         ID = id;
         Type = type;
         SizeRatio = ratio;
+        InitialSeedPosition = null;
+        Bounds = new RectInt(0,0,0,0);
+        CurrentSize = 0;
+
     }
 }
 
@@ -135,8 +139,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             return null;
         }
 
-        _roomDefinitions = settings.RoomDefinitionsList;//よくないコピーの仕方.
-        _ConnectivityGraph = settings.ConnectivityGraph;
+        
 
         GeneratedFloorPlan bestPlan = null;
         float bestScore = float.MinValue; // スコアリング実装時に使用
@@ -176,8 +179,6 @@ public  partial class FloorPlanGenerator : MonoBehaviour
 
     public void DebugAttempt()
     {
-        _roomDefinitions = settings.RoomDefinitionsList;
-        _ConnectivityGraph = settings.ConnectivityGraph;
         AttemptGeneration();
     }
     /// <summary>
@@ -185,6 +186,8 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     /// </summary>
     private GeneratedFloorPlan AttemptGeneration()
     {
+        _roomDefinitions = DeepCopyHelper.DeepCopyRoomDefinitions(settings.RoomDefinitionsList);
+        _ConnectivityGraph = settings.ConnectivityGraph.Clone();
         InitializeGrid();
         matrixToDebug = SetFloatMatrix();
         if (_totalPlaceableCells == 0)
@@ -221,20 +224,20 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         }
         MVinstance.Execute(matrixToDebug);
         MVinstance.VisualizeNetwork(ConvertToUndirectedEdgeList(_ConnectivityGraph), _roomDefinitions);
-        return null;
-        //ここまでしか出来てない
-        /*
+        
+        
         // 成功した場合、結果を構築
         GeneratedFloorPlan plan = new GeneratedFloorPlan
         {
-            Grid = (int[,])_grid.Clone(),
-            Rooms = _roomDefinitions, // RoomDefinitionもディープコピーが必要なら別途対応
-            Doors = doors,
+            //ディープコピー.
+            Grid = DeepCopyHelper.DeepCopyGrid(_grid),
+            Rooms = DeepCopyHelper.DeepCopyRoomDefinitions(_roomDefinitions), 
+            Doors = DeepCopyHelper.DeepCopyDoors(_doors)
         };
         
 
         return plan;
-        */
+        
     }
 
     /// <summary>
