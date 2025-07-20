@@ -131,7 +131,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
         // フェーズ3: ギャップ埋め
         Debug.Log("Phase 3: Filling Gaps");
         FillGaps();
-        if (MVinstance.todebug == ToDebug.FillGaps)
+        if (MVinstance.todebug == ToDebug.FillGaps || MVinstance.todebug == ToDebug.DetermineConnectivity)
         {
             matrixToDebug = ConvertMatrix(_grid, "float");
         }

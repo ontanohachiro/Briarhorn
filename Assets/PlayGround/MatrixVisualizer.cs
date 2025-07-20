@@ -9,7 +9,8 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public enum ToDebug
 {
-    CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition, ExpandTo22,GrowRect, GrowLShape, FillGaps
+    Empty ,CalculateDistanceToWall, CalculateWeightsForRoom, SelectBestSeedPosition, ExpandTo22,GrowRect, GrowLShape, FillGaps
+    ,DetermineConnectivity
 }
 
 public class MatrixVisualizer : MonoBehaviour
@@ -18,6 +19,7 @@ public class MatrixVisualizer : MonoBehaviour
     public ToDebug todebug;
     private GameObject Parent = null;
     private GameObject LineParent = null;
+    private GameObject DoorParent = null;
     public FloorPlanSettings inputSettings;
 
     public FloorPlanGenerator FPG_instance;
@@ -246,6 +248,43 @@ public class MatrixVisualizer : MonoBehaviour
         // このシェーダーはUnityに標準で含まれているものです
         lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Alpha Blended Premultiply"));
     }
+
+    public void DrawDoor(Door door, Transform parent)
+    {
+
+        Vector2Int point1 = door.Cell1;
+        Vector2Int point2 = door.Cell2;
+        // 1. Cubeプリミティブをシーンに生成する
+        GameObject rectangleObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        rectangleObject.name = "Generated Door";
+        rectangleObject.transform.SetParent(parent);
+        // 2. 中心位置を計算し、地面に配置する
+        Vector3 offset = new Vector3(0.5f, 0, 0.5f);
+        Vector2 center = ((Vector2)point1 + (Vector2)point2) / 2f;
+        rectangleObject.transform.position = new Vector3(center.x, 0.5f, center.y) + offset;
+            // 3. 2点間のベクトルと、その全長(長さ)を計算する
+            Vector2 delta = (Vector2)point2 - (Vector2)point1;
+
+        // 4. deltaの向きに応じてlocalScaleを設定する
+        // deltaのx成分の絶対値がy成分の絶対値より大きいか(横方向か)どうかを判断
+        if (Mathf.Abs(delta.x) > Mathf.Abs(delta.y))
+        {
+            // (1,0)ならscaleが(0.1,1,1) 
+            rectangleObject.transform.localScale = new Vector3(0.1f, 1f, 1f);
+        }
+        else
+        {
+            // (0,1)ならscaleが(1,1,0.1) 
+            rectangleObject.transform.localScale = new Vector3(1, 1, 0.1f);
+        }
+
+        // 5. 色を茶色に設定する
+        Renderer renderer = rectangleObject.GetComponent<Renderer>();
+        renderer.material.color = new Color(139f / 255f, 69f / 255f, 19f / 255f);
+
+        // 6. 自動で追加されるコライダーは不要なため破棄する
+        UnityEngine.Object.Destroy(rectangleObject.GetComponent<Collider>());
+    }
     void Start()
     {
         inputSettings = new FloorPlanSettings(CreateFootprint(xsize, ysize),CreateRoomDefinitionList(),CreateConnectivityGraph());
@@ -299,6 +338,18 @@ public class MatrixVisualizer : MonoBehaviour
             }
         }
 
+    }
+    public void VisualizeDoor(List <Door> _doors)
+    {
+        if (DoorParent != null)
+        {
+            Destroy(DoorParent);
+        }
+        DoorParent = new GameObject();
+        foreach (var door in _doors)
+        {
+            DrawDoor(door, DoorParent.transform);
+        }
     }
     // Update is called once per frame
     void Update()

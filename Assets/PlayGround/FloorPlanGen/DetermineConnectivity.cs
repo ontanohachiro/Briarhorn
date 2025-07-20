@@ -8,20 +8,16 @@ using QuikGraph;
 // --- ステップ3: DetermineConnectivity とその補助関数 ---
 public partial class FloorPlanGenerator : MonoBehaviour
 {
-    // 生成されたドアのリスト (外部で定義されたDoorクラスを使用)
-    private List<Door> _doors = new List<Door>();
-
-
-
     /// <summary>
     /// クラスが保持する接続グラフ(_ConnectivityGraph)に基づき、部屋間にドアを設置する壁を決定する関数。
     /// </summary>
-    public void DetermineConnectivity()
+    public bool DetermineConnectivity()
     {
         // --- (0) 辺のリストを生成 ---
         // クラスが持つ有向グラフを無向グラフの辺リストに変換
-        List<Tuple<int, int>> connections = ConvertToUndirectedEdgeList(_ConnectivityGraph);
         _doors.Clear();
+        List<Tuple<int, int>> connections = ConvertToUndirectedEdgeList(_ConnectivityGraph);
+      
 
         // グローバルな重み減少マップ。ドア設置による影響を蓄積する。
         var doorWeightsReductionH = new float[_gridSize.x, _gridSize.y + 1];
@@ -133,8 +129,7 @@ public partial class FloorPlanGenerator : MonoBehaviour
             // ドアを設置できる壁が見つからなかった場合
             if (potentialDoors.Count == 0)
             {
-                Debug.LogError($"Failed to find a valid door location for connection ({connection.Item1}, {connection.Item2}). No valid wall found.");
-                continue;
+                return false;
             }
 
             // 重みが最大の壁の中からランダムに1つを選択してドアを設置
@@ -160,6 +155,8 @@ public partial class FloorPlanGenerator : MonoBehaviour
             // グローバルな重み減少マップを更新する
             DecreaseSurroundingWeights(doorPos.x, doorPos.y, isVertical, -0.1f, doorWeightsReductionV, doorWeightsReductionH);
         }
+        Debug.Log("Complete Determine Conectivity");
+        return true;
     }
 
     

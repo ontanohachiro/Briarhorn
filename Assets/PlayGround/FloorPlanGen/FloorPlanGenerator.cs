@@ -122,6 +122,7 @@ public  partial class FloorPlanGenerator : MonoBehaviour
     private int[,] _grid; // 0: 建物外/壁/穴, -1: 配置可能だが未割り当て, >0: 部屋ID .出力に使用.
     private List<RoomDefinition> _roomDefinitions;//部屋の特性.
     private int _totalPlaceableCells = 0; // 配置可能なセルの総数
+    private List<Door> _doors = new List<Door>();//ドアのリスト.
 
     /// <summary>
     /// フロアプラン生成のメイン関数
@@ -204,34 +205,25 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             Debug.LogError("Failed during ExpandRooms.");
             return null;
         }
-       MVinstance.Execute(matrixToDebug);
-        MVinstance.VisualizeNetwork(ConvertToUndirectedEdgeList(_ConnectivityGraph), _roomDefinitions);
-        return null;//ここまでしか出来てない
-        /*
-        // 隣接制約の検証
-        if (!VerifyAdjacencyConstraints())
-        {
-            Debug.LogWarning("Adjacency constraints not fully met in this attempt.");
-            // 失敗とするか、スコアを下げるかなどの判断
-            // return null; // ここで失敗とすることも可能
-        }
+       
+        
+
 
         // 3. 部屋の接続性 (Room Connectivity)
-        List<Door> doors = DetermineConnectivity( settings.ConnectivityGraph);
-        if (doors == null) // DetermineConnectivity内でエラーログが出るはず
+        if (!DetermineConnectivity())
         {
-            Debug.LogError("Failed during DetermineConnectivity (door list is null).");
+            Debug.LogError("Failed during DetermineConnectivity.");
             return null;
         }
-        if (!VerifyReachability(doors))
+        if(MVinstance.todebug == ToDebug.DetermineConnectivity)
         {
-            Debug.LogWarning("Reachability constraints not met. Attempting to fix...");
-            // TODO: 到達可能性を修正するロジック (DetermineConnectivity内で部分的に対応済み)
-            // ここで再度 DetermineConnectivity を呼ぶか、専用の修正関数を呼ぶ
-            // return null; // 修正不可なら失敗とする
+                MVinstance.VisualizeDoor(_doors);
         }
-
-        
+        MVinstance.Execute(matrixToDebug);
+        MVinstance.VisualizeNetwork(ConvertToUndirectedEdgeList(_ConnectivityGraph), _roomDefinitions);
+        return null;
+        //ここまでしか出来てない
+        /*
         // 成功した場合、結果を構築
         GeneratedFloorPlan plan = new GeneratedFloorPlan
         {
@@ -240,8 +232,6 @@ public  partial class FloorPlanGenerator : MonoBehaviour
             Doors = doors,
         };
         
-        // Boundsを計算して格納 (オプション)
-        CalculateRoomBounds(plan);
 
         return plan;
         */
@@ -310,46 +300,6 @@ public  partial class FloorPlanGenerator : MonoBehaviour
         // score *= Mathf.Clamp01(1.0f - ratioError); // 誤差が大きいほど減点
 
         return score;
-    }
-
-
-    /// <summary>
-    /// 各部屋のバウンディングボックスを計算してRoomDefinitionに格納
-    /// </summary>
-    private void CalculateRoomBounds(GeneratedFloorPlan plan)
-    {
-        foreach (var room in plan.Rooms)
-        {
-            int roomId = room.ID;
-            int minX = _gridSize.x, minY = _gridSize.y, maxX = -1, maxY = -1;
-            bool roomFound = false;
-
-            for (int x = 0; x < _gridSize.x; x++)
-            {
-                for (int y = 0; y < _gridSize.y; y++)
-                {
-                    if (plan.Grid[x, y] == roomId)
-                    {
-                        roomFound = true;
-                        if (x < minX) minX = x;
-                        if (y < minY) minY = y;
-                        if (x > maxX) maxX = x;
-                        if (y > maxY) maxY = y;
-                    }
-                }
-            }
-
-            if (roomFound)
-            {
-                room.Bounds = new RectInt(minX, minY, maxX - minX + 1, maxY - minY + 1);
-            }
-            else
-            {
-                // 部屋がグリッド上に存在しない？ エラーまたはデフォルト値を設定
-                room.Bounds = new RectInt(0, 0, 0, 0);
-                Debug.LogWarning($"Room {roomId} not found in the final grid when calculating bounds.");
-            }
-        }
     }
 
     /// <summary>
